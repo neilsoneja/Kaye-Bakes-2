@@ -1146,7 +1146,33 @@ ul.tags li a, ul.social_icon li a,
 .news_main .col-md-6.news_thumb img, .news_main .col-sm-6.news_thumb img{ margin-bottom:0;}
 /* ============== Latest News Ends =============== */
 
+/* ============== Customize Button =============== */
 
+.customize{
+  position: relative;
+  top: 35px;
+  text-align: center;
+}
+
+.customize button {
+  border: none;
+  padding: 32px 54px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 22px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white; 
+  color: black; 
+  border: 2px solid #e25111;
+}
+
+.customize button:hover{
+  background-color: #e25111;
+  color: white;
+}
+
+/* =========== Customize Button Ends ============= */
 
 
 /* ================== Testinimials ============= */
