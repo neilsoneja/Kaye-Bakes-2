@@ -246,6 +246,8 @@ include 'includes/wallet.php';
         </div>
         <!--end container-->
 
+        <!--end container-->
+
       </section>
       <!-- END CONTENT -->
 
