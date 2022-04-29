@@ -310,7 +310,7 @@ include 'includes/wallet.php';
 			}
 		echo '},';
 		?>
-        messages: {
+        messages{
 			<?php
 			$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
 			while($row = mysqli_fetch_array($result))
