@@ -190,65 +190,82 @@ include 'includes/wallet.php';
       <!-- START CONTENT -->
       <section id="content">
 
-        <!--breadcrumbs start-->
-        
-        <!--breadcrumbs end-->
+<!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+     <div class="container">
+        <div class="row">
+         <div class="col s12 m12 l12">
+          <h5 class="breadcrumbs-title">Customization</h5>
+         </div>
+       </div>
+      </div>
+     </div>
+<!--breadcrumbs end-->
 
 
-        <!--start container-->
-        <div class="container">
-          
-		  <form class="formValidate" id="formValidate" method="post" action="place-order.php" novalidate="novalidate">
-            <div class="row">
-              <div class="col s12 m4 l3">
-                <h4 class="header">Order Food</h4>
-              </div>
+<!--start container-->
+    <div class="container">
+      <p class="caption">Create a cake, just for you</p>
+        <div class="divider"></div>
+          <div class="row">
+              <h4 class="header">Check our previous transactions</h4>
               <div>
-                  <table id="data-table-customer" class="responsive-table display" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Item Price/Piece</th>
-                        <th>Quantity</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
+                <div class="card-panel">
+                  <div class="row">
+                    <form class="formValidate" id="formValidate" method="post" action="routers/details-router.php" novalidate="novalidate"class="col s12">
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <div class="Search-Bar">
+                            <form action="Customized.php" method="POST">
+                              <input type="text" name="search" placeholder="Search">
+                                <button type="submit" name="submit-search">Search</button>
+                            </form>
+                          </div>
 				<?php
-				$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
-				while($row = mysqli_fetch_array($result))
-				{
-					echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td>';                      
-					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
-					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
-				}
+                $result = mysqli_query($con, "SELECT * FROM items where not deleted;");
+				while($row = mysqli_fetch_array($result));
+
+                $query_results = mysqli_num_rows($result);
+        
+                if ($query_results > 0) {
+                    while($row = mysqli_fetch_array($result)){
+                        echo "<a href ='product.php?title=".$row['name']."&price=".$row['price']."'><div class='products-box'>
+                            <h3>".$row['name']."</h3>
+                            <p>".$row['price']."<p>
+                        </div>";
+                    }
+                }
 				?>
-                    </tbody>
-</table>
               </div>
-			  <div class="input-field col s12">
-              <i class="mdi-editor-mode-edit prefix"></i>
-              <textarea id="description" name="description" class="materialize-textarea"></textarea>
-              <label for="description" class="">Any note(optional)</label>
-			  </div>
-			  <div>
-			  <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
-                                <i class="mdi-content-send right"></i>
-                              </button>
-                            </div>
-            </div>
-			</form>
-            <div class="divider"></div>
-            
-          </div>
-        </div>
+			    
+
         <!--end container-->
 
         <!--end container-->
 
       </section>
+      <div class="card-panel">
+                  <div class="row">
+                    <form class="formValidate" id="formValidate" method="post" action="routers/details-router.php" novalidate="novalidate"class="col s12">
+                      <div class="row">
+                        <div class="input-field col s12">
+      <div class="input-field col s12">
+                  <i class="mdi-editor-mode-edit prefix"></i>
+                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                      <label for="description" class="">Any note(optional)</label>
+			        </div>
+			          <div>
+			            <div class="input-field col s12">
+                          <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
+                            <i class="mdi-content-send right"></i>
+                          </button>
+                        </div>
+                      </div>
+			        </form>
+                      <div class="divider">
+                    </div> 
+                  </div>
+                </div>
       <!-- END CONTENT -->
 
 
