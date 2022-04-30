@@ -971,7 +971,7 @@ ul.tags li a, ul.social_icon li a,
 #service-slider .owl-prev:hover, #service-slider .owl-prev:focus,
 #service-slider .owl-next:hover, #service-slider .owl-next:hover{
 	background:#e25111;
-	3color:#fff;
+	color:#fff;
 }
 /* ================== Our Services Ends ==================*/
 
@@ -1064,37 +1064,6 @@ ul.tags li a, ul.social_icon li a,
 }
 .right_box{ background:rgba(226,81,18,.85);}
 .right_box .right_box_inner .white_content{ margin:20px 0;}
-
-
-/* ================== Counters Fact Info ================== */
-#facts{
-	background:url(../images/bg-facts.jpg) no-repeat fixed;
-	padding:6% 0;
-	background-size:cover;
-}
-#facts .counters-item{
-	padding:26% 10%;
-	font-weight:bold;
-	vertical-align:middle;
-	color:#fff;
-}
-#facts .counters-item h2{
-	font-family: "Open Sans", sans-serif;
-	color:#e25111;
-}	
-.counters-item i {
-  font-size:50px;
-  display: block;
-  margin-bottom:15px;
-}
-.counters-item p{
-	color:#fff;
-	text-transform: capitalize;
-	font-weight:bold;
-}
-/*  ================ Counters Fact Info Ends ============= */
-
-
 
 
 /* ============== Latest News =============== */
@@ -2170,8 +2139,6 @@ p{ font-size:12px; }
   left: auto !important;
   right: 65px !important;
 }
-#facts, .info_section, .paralax{ background-position:center center !important;}
-#facts .number-counters > .col-xs-12{ width:50%;}	
 #cheffs-slider .item .cheffs_info{
   display:none;
   top:0;
