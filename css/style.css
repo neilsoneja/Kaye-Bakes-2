@@ -6,7 +6,6 @@
 + navigation.affix
 	+ navbar-default
 		+ navbar-nav
-
  + main-slider
  	+ tp-banner-container
 		+ tp-banner
@@ -47,7 +46,6 @@
 + .grid_layout
 	+ wrap-col
 		+ item-container
-
 + gallery 
 	+ work-filter
 	+ work-item
@@ -60,7 +58,6 @@
 	+ sidebar
 		+ tabs
 		+ tab_container
-
 + order
 	+ appointment_wrap
 		+ callus
@@ -93,7 +90,6 @@
 + footer
 	+ footer_column
 		 
-
 */
 
 /**----- Fonts ----**/
@@ -971,9 +967,7 @@ ul.tags li a, ul.social_icon li a,
 #service-slider .owl-prev:hover, #service-slider .owl-prev:focus,
 #service-slider .owl-next:hover, #service-slider .owl-next:hover{
 	background:#e25111;
-	color:#fff;
-}
-}
+	3color:#fff;
 }
 /* ================== Our Services Ends ==================*/
 
@@ -1068,6 +1062,37 @@ ul.tags li a, ul.social_icon li a,
 .right_box .right_box_inner .white_content{ margin:20px 0;}
 
 
+/* ================== Counters Fact Info ================== */
+#facts{
+	background:url(../images/bg-facts.jpg) no-repeat fixed;
+	padding:6% 0;
+	background-size:cover;
+}
+#facts .counters-item{
+	padding:26% 10%;
+	font-weight:bold;
+	vertical-align:middle;
+	color:#fff;
+}
+#facts .counters-item h2{
+	font-family: "Open Sans", sans-serif;
+	color:#e25111;
+}	
+.counters-item i {
+  font-size:50px;
+  display: block;
+  margin-bottom:15px;
+}
+.counters-item p{
+	color:#fff;
+	text-transform: capitalize;
+	font-weight:bold;
+}
+/*  ================ Counters Fact Info Ends ============= */
+
+
+
+
 /* ============== Latest News =============== */
 .news_main{ background:#fff;}
 .news_main h3{
@@ -1117,33 +1142,7 @@ ul.tags li a, ul.social_icon li a,
 .news_main .col-md-6.news_thumb img, .news_main .col-sm-6.news_thumb img{ margin-bottom:0;}
 /* ============== Latest News Ends =============== */
 
-/* ============== Customize Button =============== */
 
-.customize{
-  position: relative;
-  top: 35px;
-  text-align: center;
-}
-
-.customize button {
-  border: none;
-  padding: 32px 54px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 22px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: white; 
-  color: black; 
-  border: 2px solid #e25111;
-}
-
-.customize button:hover{
-  background-color: #e25111;
-  color: white;
-}
-
-/* =========== Customize Button Ends ============= */
 
 
 /* ================== Testinimials ============= */
@@ -2141,6 +2140,8 @@ p{ font-size:12px; }
   left: auto !important;
   right: 65px !important;
 }
+#facts, .info_section, .paralax{ background-position:center center !important;}
+#facts .number-counters > .col-xs-12{ width:50%;}	
 #cheffs-slider .item .cheffs_info{
   display:none;
   top:0;
@@ -2189,4 +2190,3 @@ footer .copyright ul.social_icon {
 
 
 }
-
