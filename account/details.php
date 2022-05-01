@@ -212,7 +212,7 @@ $username = $row['username'];
               <div class="col s12 m4 l3">
                 <h4 class="header">Details</h4>
               </div>
-<div>
+            <div>
                 <div class="card-panel">
                   <div class="row">
                     <form class="formValidate" id="formValidate" method="post" action="routers/details-router.php" novalidate="novalidate"class="col s12">

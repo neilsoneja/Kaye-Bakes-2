@@ -178,8 +178,27 @@ include 'includes/wallet.php';
                 </li>					
             <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
             </li>
-            <li class="bold"><a href="Customize.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Customize Cake</a>
-            </li>								
+            <li class="no-padding">
+                    <ul class="collapsible collapsible-accordion">
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-insert-invitation"></i>Personalized Cakes</a>
+                            <div class="collapsible-body">
+                                <ul>
+								<li><a href="orders.php">Our inventory</a>
+                                </li>
+								<?php
+                                /*
+									$sql = mysqli_query($con, "SELECT DISTINCT status FROM orders WHERE customer_id = $user_id;");
+									while($row = mysqli_fetch_array($sql)){
+                                    echo '<li><a href="orders.php?status='.$row['status'].'">'.$row['status'].'</a>
+                                    </li>';
+									}
+                                */
+									?>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>							
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -190,63 +209,140 @@ include 'includes/wallet.php';
       <!-- START CONTENT -->
       <section id="content">
 
-        <!--breadcrumbs start-->
+<!--breadcrumbs start-->
+    <div id="breadcrumbs-wrapper">
+     <div class="container">
+        <div class="row">
+         <div class="col s12 m12 l12">
+          <h5 class="breadcrumbs-title">Customization</h5>
+         </div>
+       </div>
+      </div>
+     </div>
+<!--breadcrumbs end-->
+
+
+<!--start container-->
+    <div class="container">
+      <p class="caption">Create a cake, just for you</p>
+        <div class="divider"></div>
+          <div class="row">
+              <h4 class="header">Check our previous transactions</h4>
+              <div>
+                <div class="card-panel">
+                  <div class="row">
+
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <div class="Search-Bar">
+                            <form action="customize.php" method="POST">
+                              <input type="text" name="search" placeholder="Search">
+                                <button type="submit" name="submit-search">Search</button>
+                            </form>
+                          </div>
+				<?php
+                //---------Search Algorithm----------//
+
+                /*
+                if(isset($_POST['submit-search'])) {
+                    $search = mysqli_real_escape_string($conn, $_POST['search']);
+                    $sql = "SELECT * FROM Products Where Product_Name LIKE '%$search%' OR Product_Desc LIKE '%$search%' ";
+                    $result = mysqli_query($conn, $sql);
+                    $query_results = mysqli_num_rows($result);
         
-        <!--breadcrumbs end-->
+                    if ($query_results > 0) {
+                        while ($row = mysqli_fetch_array($result)) {
+                            echo "<a href ='product.php?title=".$row['Product_Name']."&price=".$row['Price']."'><div class='products-box'>
+                            <h3>".$row['Product_Name']."</h3>
+                            <p>".$row['Price']."<p>
+                        </div></a>";
+                        }
+                    } 
+        
+                    else { 
+                        echo "There are no results matching your search, please try again";
+                    }
+                }
+                */
 
+                //---------Search Algorithm----------//
+				?>
+              </div>
+			    
 
-        <!--start container-->
-        <div class="container">
+        <!--end container-->
+
+        <!--end container-->
+
+      </section>
+      <div class="container">
           
 		  <form class="formValidate" id="formValidate" method="post" action="place-order.php" novalidate="novalidate">
             <div class="row">
               <div class="col s12 m4 l3">
-                <h4 class="header">Order Food</h4>
+                <h4 class="header">Results</h4>
               </div>
               <div>
                   <table id="data-table-customer" class="responsive-table display" cellspacing="0">
                     <thead>
                       <tr>
                         <th>Name</th>
-                        <th>Image</th>
-                        <th>Item Price/Piece</th>
+                        <th>Sample Image</th>
+                        <th>Item Price</th>
                         <th>Description</th>
                         <th>Quantity</th>
                       </tr>
                     </thead>
                     <tbody>
 				              <?php
-				                $result = mysqli_query($con, "SELECT * FROM items where not deleted;");
+				                $result = mysqli_query($con, "SELECT * FROM items where not deleted and customized;");
 				                while($row = mysqli_fetch_array($result))
 				                {
-					                echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td><td>'.$row["description"].'</td>';                      
-					                echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
-					                echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
+					                echo '<tr>
+                                        <td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'">
+                                        </td>
+                                        <td>'.$row["price"].'
+                                        </td>
+                                        <td>'.$row["description"].'
+                                        </td>';  
+
+					                echo '<td>
+                                        <div class="input-field col s12">
+                                        <label for='.$row["id"].' class="">Quantity</label>';
+					                echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'">
+                                        </div></td></tr>';
 				                }
 				              ?>
                     </tbody>
                   </table>
                 </div>
-                <div class="input-field col s12">
-                <i class="mdi-editor-mode-edit prefix"></i>
-                <textarea id="description" name="description" class="materialize-textarea"></textarea>
-                <label for="description" class="">Any note(optional)</label>
-			        </div>
-			        <div>
-			          <div class="input-field col s12">
-                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
-                    <i class="mdi-content-send right"></i>
-                  </button>
+            <div class="card-panel">
+                <div class="row">
+                    <form class="formValidate" id="formValidate" method="post" action="routers/details-router.php" novalidate="novalidate"class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <div class="input-field col s12">
+                                    <i class="mdi-editor-mode-edit prefix"></i>
+                                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                                    <label for="description" class="">Any note(optional)</label>
+			                    </div>
+			                    <div>
+			                        <div class="input-field col s12">
+                                        <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
+                                        <i class="mdi-content-send right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+			                </form>
+                            <div class="divider">
+                        </div> 
+                    </div>
                 </div>
-              </div>
-		        </form>
-            <div class="divider"></div>
-          </div>
-        </div>
-        <!--end container-->
-      </section>
+            </div>
+        </div> 
+    </div>
       <!-- END CONTENT -->
-  </div>
+</div>
   <!-- END MAIN -->
 
 
@@ -304,7 +400,7 @@ include 'includes/wallet.php';
 			}
 		echo '},';
 		?>
-        messages: {
+        messages{
 			<?php
 			$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
 			while($row = mysqli_fetch_array($result))
