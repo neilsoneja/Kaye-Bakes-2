@@ -210,46 +210,42 @@ include 'includes/wallet.php';
                         <th>Name</th>
                         <th>Image</th>
                         <th>Item Price/Piece</th>
+                        <th>Description</th>
                         <th>Quantity</th>
                       </tr>
                     </thead>
-
                     <tbody>
-				<?php
-				$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
-				while($row = mysqli_fetch_array($result))
-				{
-					echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td>';                      
-					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
-					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
-				}
-				?>
+				              <?php
+				                $result = mysqli_query($con, "SELECT * FROM items where not deleted;");
+				                while($row = mysqli_fetch_array($result))
+				                {
+					                echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td><td>'.$row["description"].'</td>';                      
+					                echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
+					                echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
+				                }
+				              ?>
                     </tbody>
-</table>
+                  </table>
+                </div>
+                <div class="input-field col s12">
+                <i class="mdi-editor-mode-edit prefix"></i>
+                <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                <label for="description" class="">Any note(optional)</label>
+			        </div>
+			        <div>
+			          <div class="input-field col s12">
+                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                </div>
               </div>
-			  <div class="input-field col s12">
-              <i class="mdi-editor-mode-edit prefix"></i>
-              <textarea id="description" name="description" class="materialize-textarea"></textarea>
-              <label for="description" class="">Any note(optional)</label>
-			  </div>
-			  <div>
-			  <div class="input-field col s12">
-                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
-                                <i class="mdi-content-send right"></i>
-                              </button>
-                            </div>
-            </div>
-			</form>
+		        </form>
             <div class="divider"></div>
-            
           </div>
         </div>
         <!--end container-->
-
       </section>
       <!-- END CONTENT -->
-
-
   </div>
   <!-- END MAIN -->
 
