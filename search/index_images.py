@@ -1,6 +1,7 @@
 from helper.hashing import convert_hash
 from helper.hashing import hamming
 from helper.hashing import dhash
+from helper.size import resize
 from imutils import paths
 import argparse
 import pickle
@@ -26,7 +27,10 @@ for (i, imagePath) in enumerate(imagePaths):
 	print(" processing image {}/{}".format(i + 1,
 		len(imagePaths)))
 	image = cv2.imread(imagePath)
-
+	
+	#resizing
+	image=resize(image)
+	
 	# computing hash for the image
 	h = dhash(image)
 	h = convert_hash(h)

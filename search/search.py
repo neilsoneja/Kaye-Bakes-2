@@ -1,5 +1,6 @@
 from helper.hashing import convert_hash
 from helper.hashing import dhash
+from helper.size import resize
 import argparse
 import pickle
 import time
@@ -21,6 +22,7 @@ tree = pickle.loads(open(args["tree"], "rb").read())
 hashes = pickle.loads(open(args["hashes"], "rb").read())
 
 image = cv2.imread(args["query"])
+image=resize(image)
 cv2.imshow("Query", image)
 
 queryHash = dhash(image)
@@ -45,5 +47,7 @@ for (d, h) in results:
 	for resultPath in resultPaths:
 		# load the result image and display it to our screen
 		result = cv2.imread(resultPath)
+		result=resize(result)
 		cv2.imshow("Result", result)
 		cv2.waitKey(0)
+		break
