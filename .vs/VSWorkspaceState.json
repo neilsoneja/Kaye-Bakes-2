@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\css"
+    "\\account",
+    "\\account\\includes",
+    "\\css",
+    "\\fonts",
+    "\\images",
+    "\\js",
+    "\\screenshots",
+    "\\webfonts"
   ],
+  "SelectedNode": "\\food.sql",
   "PreviewInSolutionExplorer": false
 }
