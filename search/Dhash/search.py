@@ -22,7 +22,7 @@ tree = pickle.loads(open(args["tree"], "rb").read())
 hashes = pickle.loads(open(args["hashes"], "rb").read())
 
 image = cv2.imread(args["query"])
-image=resize(image)
+#image=resize(image)
 cv2.imshow("Query", image)
 
 queryHash = dhash(image)
@@ -47,7 +47,8 @@ for (d, h) in results:
 	for resultPath in resultPaths:
 		# load the result image and display it to our screen
 		result = cv2.imread(resultPath)
+		print(resultPath)
 		result=resize(result)
 		cv2.imshow("Result", result)
-		cv2.waitKey(0)
-		break
+		key=cv2.waitKey(0)
+

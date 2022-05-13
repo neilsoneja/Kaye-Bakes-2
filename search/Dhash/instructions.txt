@@ -4,6 +4,6 @@ $ pyhton3 pip install opencv-contrib-python
 $ pyhton3 pip install imutils
 $ pyhton3 pip install vptree
 
-$ python3 index_images.py --images haystack --tree vptree.pickle --hashes hashes.pickle
+$ python3 index_images.py --images images --tree vptree.pickle --hashes hashes.pickle
 
-$ python3 search.py --tree vptree.pickle --hashes hashes.pickle --query new.jpg
+$python3 search.py --tree vptree.pickle --hashes hashes.pickle --query new.jpg --distance 20	

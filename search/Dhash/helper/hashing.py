@@ -7,6 +7,7 @@ def dhash(image, hashSize=8):
 	resized = cv2.resize(gray, (hashSize + 1, hashSize))
 	#compute difference image
 	diff = resized[:, 1:] > resized[:, :-1]
+	
 	return sum([2 ** i for (i, v) in enumerate(diff.flatten()) if v])
 
 def convert_hash(h):

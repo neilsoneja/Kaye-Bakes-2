@@ -2,14 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\account",
-    "\\account\\includes",
-    "\\css",
-    "\\fonts",
-    "\\images",
-    "\\js",
-    "\\screenshots",
-    "\\webfonts"
+    "\\search",
+    "\\search\\Dhash",
+    "\\search\\Dhash\\helper"
   ],
-  "SelectedNode": "\\food.sql",
+  "SelectedNode": "\\search\\Dhash\\search.py",
   "PreviewInSolutionExplorer": false
 }
