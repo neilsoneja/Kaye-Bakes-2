@@ -27,7 +27,7 @@
             <li><a href="#"><i class="fas fa-cake-candles"></i>Menu</a></li>
             <li><a href="#"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
             <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>
-            <li><a href="upload.php"><i class="fas fa-project-diagram"></i>portfolio</a></li>
+            <li><a href="upload.php"><i class="fas fa-project-diagram"></i>Custom</a></li>
         </ul> 
         <div class="social_media">
           <a href="#"><i class="fab fa-facebook-f"></i></a>

@@ -9,9 +9,12 @@
 	<title>Kaye Bakes</title>
 
     <!---Main CSS--->
-	  <link rel="stylesheet" type ="text/css" href="css/custom.min.css">
+	<link rel="stylesheet" type ="text/css" href="css/custom.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 
-    <!---Nav Bar---> 
+    <!---Nav Bar--->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script src="https://kit.fontawesome.com/0f30674e5a.js" crossorigin="anonymous"></script>
    
     
@@ -43,18 +46,21 @@
           <div class="product-container">
             <div class="card">
               <?php
-                $sql = "SELECT * FROM products WHERE customized = 0";
+                $title = mysqli_real_escape_string($conn, $_GET['title']);
+                $image = mysqli_real_escape_string($conn, $_GET['image']);
+
+                $sql = "SELECT * FROM products WHERE product_name='$title' and image_url='$image'";
                 $result = mysqli_query($conn, $sql);
                 $query_results = mysqli_fetch_array($result);
     
                 if ($query_results > 0) {
                   while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='product-box'>
+                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'><div class='product-box'>
                     <img src='images/".$row['image_url']."' >
                     <h3>".$row['product_name']."</h3>
                     <p>Php ".$row['product_price']."</p>
                     <button>Add to Cart</button>
-                  </div>";
+                  </div></a>";
                   }
                 }
               ?>

@@ -37,33 +37,3 @@
   <div class="main_content">
     <div class="row">
       <div class="header">Welcome!!</div> 
-
-      <div class="menu">
-        <h1>Our Menu</h1>
-          <div class="product-container">
-            <div class="card">
-              <?php
-                $sql = "SELECT * FROM products WHERE customized = 0";
-                $result = mysqli_query($conn, $sql);
-                $query_results = mysqli_fetch_array($result);
-    
-                if ($query_results > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='product-box'>
-                    <img src='images/".$row['image_url']."' >
-                    <h3>".$row['product_name']."</h3>
-                    <p>Php ".$row['product_price']."</p>
-                    <button>Add to Cart</button>
-                  </div>";
-                  }
-                }
-              ?>
-            </div>
-          </div> 
-        </div>
-      </div> 
-    </div>        
-  </div>
-
-</body>
-</html>

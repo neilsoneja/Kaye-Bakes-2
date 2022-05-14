@@ -10,15 +10,14 @@
 }
 
 body{
-   background-color: #f3f5f9;
+   background-color: #F8EFBA;
+   
 }
 header{
     display: flex;
     position: relative;
     color: #312519;
 }
-
-
 
 .wrapper{
   display: flex;
@@ -31,6 +30,7 @@ header{
   background: #312519;
   padding: 30px 0px;
   position: fixed;
+  
 }
 
 .wrapper .sidebar h2{
@@ -95,50 +95,65 @@ header{
   color: #cbc289;
   border-left:1px solid #717171;
   border-bottom: 1px solid #e0e4e8;
-}
-
-.wrapper .main_content .info{
-  margin: 20px;
-  color: #717171;
-  line-height: 25px;
+  margin-bottom: 25px;
 }
 
 .wrapper .main_content .info div{
   margin-bottom: 20px;
 }
 
-tbody tr td img{
-  height: 200px;
-  width: 200px;
+.wrapper .main_content .menu{
+
 }
 
-tbody .input-field col s12
+.wrapper .main_content .product-container .card{
+  margin-left: 55px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 
-#content{
-  width: 50%;
-  margin: 20px auto;
-  border: 1px solid #cbcbcb;
+.wrapper .main_content .product-container .card .product-box{
+  background-color: #31241b;
+  border-radius: 10px;
+  box-shadow: 0px 5px 5px  #25190d;;
+  padding: 20px 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  max-width: 300px;
 }
-form{
-  width: 50%;
-  margin: 20px auto;
+
+.wrapper .main_content .product-container .card .product-box img{
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: 5px;
 }
-form div{
-  margin-top: 5px;
+
+.wrapper .main_content .product-container .card .product-box h3{
+  font-size: 20px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 2px;
+  color: #e0e4e8;
 }
-#img_div{
-  width: 80%;
+
+.wrapper .main_content .product-container .card .product-box p{
+  color: #e0e4e8;
+  font-size: 15px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin: 2px;
+}
+
+.wrapper .main_content .product-container .card .product-box button{
+  background-color: #cbc289;
+  border: none;
   padding: 5px;
-  margin: 15px auto;
-  border: 1px solid #cbcbcb;
-}
-#img_div:after{
-  content: "";
-  display: block;
-  clear: both;
+  border-radius: 4px;
+  margin: 2px;
 }
 
-
+.wrapper .main_content .product-container .card .product-box button:hover{
+  box-shadow: 0px 5px 5px #722200;
+}
 *,
 *:before,
 *:after{
