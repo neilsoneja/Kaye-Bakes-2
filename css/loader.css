@@ -61,7 +61,7 @@
 		-moz-animation-iteration-count: infinite;
 }
 .cssload-circle:nth-child(2) {
-	background: rgb(246,80,29);
+	background: #bbb079;
 	animation-name: cssload-explode;
 		-o-animation-name: cssload-explode;
 		-ms-animation-name: cssload-explode;
@@ -196,7 +196,7 @@
   height: 0;
   width: 0;
   box-sizing: border-box;
-  border: 0 solid #ff3332;
+  border: 0 solid #bbb079;
   border-radius: 50%;
   -webkit-animation: loader-figure 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
   -moz-animation: loader-figure 1.15s infinite cubic-bezier(0.215, 0.61, 0.355, 1);

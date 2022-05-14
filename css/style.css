@@ -967,7 +967,7 @@ ul.tags li a, ul.social_icon li a,
 #service-slider .owl-prev:hover, #service-slider .owl-prev:focus,
 #service-slider .owl-next:hover, #service-slider .owl-next:hover{
 	background:#bbb079;
-	3color:#fff;
+	color:#fff;
 }
 /* ================== Our Services Ends ==================*/
 
@@ -1052,7 +1052,7 @@ ul.tags li a, ul.social_icon li a,
 
 /* ================== Image With content ================== */
 .info_section{
-	background:url(../images/paralax-half.jpg) no-repeat;
+	background:url(../images/paralax.jpg) no-repeat;
 	background-size:cover;
 	width:100%;
 	background-attachment:fixed;
