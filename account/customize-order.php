@@ -207,25 +207,11 @@
                 <p class="caption">Provide Image for Inspiration</p>
                 <div class="divider"></div>
                 <div class="row">
-
-                    <form  id="inquery_img" method="post" action="confirm-order.php" novalidate="novalidate">
-                        <div class="drag-area">
-                            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                            <header>Drag & Drop to Upload File</header>
-                            <span>OR</span>
-                            <button>Browse File</button>
-                            <span></span>
-                            <span></span>
-                            <input type="file" hidden>
-                        </div>
-                        <span>
-                            <button class="btn " type="submit" name="action">Submit
-                                <i class="mdi-content-send right"></i>
-                            </button>
-                        </span>                              
-                            <?php
-
-                            ?>
+                    
+                    <form action="Dhash/upload.php" method="post" enctype="multipart/form-data">
+                        Select image to upload:
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
                     </form>
 
                 
