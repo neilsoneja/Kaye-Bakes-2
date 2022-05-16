@@ -10,13 +10,15 @@
 <!-- Minified Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
+<link rel="stylesheet" href="css/custom.min.css">
 <link href="css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet">
 <script src="js/date-and-time/bootstrap-datetimepicker.min.js"></script>
 
 
 </head>
 <body>
+
+<div class="date-and-time">
 <div class="container">
 
 <?php
@@ -47,8 +49,9 @@ if(isset($_POST['submit']) && !empty($_POST['event_name']) && !empty($_POST['eve
 <h1>Welcome to Kaye Bakes</h1>
 <h2>Select date & time of delivery</h2>
 <form method="post" action="">
-    Location: <input type="text" name="event_name" class="form-control">
     Date & Time: <input size="16" type="text" name="event_datetime" class="form-control" id="form_datetime" readonly>
+	<h3>Select Location</h3>
+	Location: <input type="text" name="event_name" class="form-control">
     <input type="submit" name="submit" class="btn button btn-success" value="SUBMIT" />
 </form>
 <script type="text/javascript">
@@ -65,6 +68,7 @@ $(function () {
     });
 });
 </script>
+</div>
 </div>
 </body>
 </html>

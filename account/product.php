@@ -40,10 +40,9 @@
   <div class="main_content">
     <div class="row">
       <div class="header">Welcome!!</div> 
-
-      <div class="menu">
-        <h1>Our Menu</h1>
-          <div class="product-container">
+      
+      <div class="product">
+          <div class="product-page-container">
             <div class="card">
               <?php
                 $title = mysqli_real_escape_string($conn, $_GET['title']);
@@ -51,16 +50,27 @@
 
                 $sql = "SELECT * FROM products WHERE product_name='$title' and image_url='$image'";
                 $result = mysqli_query($conn, $sql);
-                $query_results = mysqli_fetch_array($result);
+                $query_results = mysqli_num_rows($result);
     
                 if ($query_results > 0) {
                   while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'><div class='product-box'>
-                    <img src='images/".$row['image_url']."' >
-                    <h3>".$row['product_name']."</h3>
-                    <p>Php ".$row['product_price']."</p>
-                    <button>Add to Cart</button>
-                  </div></a>";
+                    echo "<div class='product-box'>
+                            <table>
+                              <tr>
+                                <td class='image'>
+                                  <img src='images/".$row['image_url']."' >
+                                </td>
+                                
+                                <td class='text'>
+                                  <h3>".$row['product_name']."</h3>
+                                  <p>".$row['product_desc']."</p>
+                                  <p>Php ".$row['product_price']."</p>
+                                  <button type='submit' name='add-to-cart'>Add to Cart</button>
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>";
                   }
                 }
               ?>

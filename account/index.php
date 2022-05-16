@@ -1,5 +1,6 @@
 <?php
     include_once 'db.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,7 @@
 
     <!---Main CSS--->
 	  <link rel="stylesheet" type ="text/css" href="css/custom.min.css">
+    
 
     <!---Nav Bar---> 
     <script src="https://kit.fontawesome.com/0f30674e5a.js" crossorigin="anonymous"></script>
@@ -40,6 +42,7 @@
 
       <div class="menu">
         <h1>Our Menu</h1>
+        <form action="cart.php" method="post" id=cart>
           <div class="product-container">
             <div class="card">
               <?php
@@ -49,15 +52,17 @@
     
                 if ($query_results > 0) {
                   while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='product-box'>
+                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'><div class='product-box'>
                     <img src='images/".$row['image_url']."' >
                     <h3>".$row['product_name']."</h3>
+                    <p hidden>".$row['product_desc']."</p>
                     <p>Php ".$row['product_price']."</p>
-                    <button>Add to Cart</button>
-                  </div>";
+                    <button type='submit' form='cart' value='add-to-cart'>Add to Cart</button>
+                  </div></a>";
                   }
                 }
               ?>
+              </form>
             </div>
           </div> 
         </div>
