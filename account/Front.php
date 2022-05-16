@@ -50,9 +50,22 @@ if(isset($_POST['submit']) && !empty($_POST['event_name']) && !empty($_POST['eve
 <h2>Select date & time of delivery</h2>
 <form method="post" action="">
     Date & Time: <input size="16" type="text" name="event_datetime" class="form-control" id="form_datetime" readonly>
+
 	<h3>Select Location</h3>
-	Location: <input type="text" name="event_name" class="form-control">
-    <input type="submit" name="submit" class="btn button btn-success" value="SUBMIT" />
+	District: <select name="district" id="district">
+    	<option value="" selected="selected">Select district</option>
+  		</select>
+  		<br><br>
+  		Municipality: <select name="municipality" id="municipality">
+    	<option value="" selected="selected">Please select district first</option>
+  		</select>
+  		<br><br>
+  		City: <select name="city" id="city">
+    	<option value="" selected="selected">Please select municipality first</option>
+  		</select>
+  		<br><br>
+  		<input type="submit" value="Submit">
+</form>
 </form>
 <script type="text/javascript">
 $(function () {

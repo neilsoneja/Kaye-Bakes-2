@@ -20,7 +20,12 @@ header{
 }
 
 .date-and-time{
-  margin: auto;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border: 3px solid #274e13;
   background-color: #31241b;
   border-top-left-radius: 30px;
@@ -31,6 +36,30 @@ header{
   max-width: 80%;
 }
 
+.date-and-time h1{
+  color: #cbc289;
+}
+
+.date-and-time h2{
+  color: #cbc289;
+}
+
+.date-and-time h3{
+  color: #cbc289;
+}
+
+.date-and-time form{
+  color: #cbc289;
+}
+
+.date-and-time .btn-button-btn-success{
+  color: #274e13;
+  background-color: #cbc289;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  margin-top: 20px;
+}
 
 /*----------Nav Bar----------*/
 
