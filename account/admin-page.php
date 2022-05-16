@@ -128,7 +128,7 @@ include 'includes/connect.php';
                     </ul>
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <p class="user-roal"><?php echo $role;?></p>
                 </div>
             </div>
@@ -174,9 +174,7 @@ include 'includes/connect.php';
                     </ul>
                 </li>			
             <li class="bold"><a href="users.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Users</a>
-            </li>		
-            <li class="bold"><a href="Customize.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Customize Cake</a>	
-            </li>		
+            </li>				
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -205,9 +203,8 @@ include 'includes/connect.php';
                     <thead>
                       <tr>
                         <th>Name</th>
-                        <th>Item Price</th>
+                        <th>Item Price/Piece</th>
                         <th>Image</th>
-                        <th>Description</th>
                       </tr>
                     </thead>
 
@@ -219,8 +216,8 @@ include 'includes/connect.php';
 					echo '<tr><td><div class="input-field col s12"><label for="'.$row["id"].'_name">Name</label>';
 					echo '<input value="'.$row["name"].'" id="'.$row["id"].'_name" name="'.$row['id'].'_name" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';					
 					echo '<td><div class="input-field col s12 "><label for="'.$row["id"].'_price">Price</label>';
-					echo '<input value="'.$row["price"].'" id="'.$row["id"].'_price" name="'.$row['id'].'_price" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';          
-          echo '<td>';
+					echo '<input value="'.$row["price"].'" id="'.$row["id"].'_price" name="'.$row['id'].'_price" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';                   
+					echo '<td>';
 					if($row['deleted'] == 0){
 						$text1 = 'selected';
 						$text2 = '';
@@ -232,8 +229,6 @@ include 'includes/connect.php';
 					echo '
 					<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div>
                     </td></tr>';
-          echo '<tr><td><div class="input-field col s12"><label for="'.$row["id"].'_description">Description</label>';
-          echo '<input value="'.$row["description"].'" id="'.$row["id"].'_description" name="'.$row['id'].'_description" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td>';         
 				}
 				?>
                     </tbody>
@@ -257,7 +252,6 @@ include 'includes/connect.php';
                       <tr>
                         <th data-field="id">Name</th>
                         <th data-field="name">Item Price/Piece</th>
-                        <th data-field="description">Description</th>
                         <th data-field="image">Image</th>
                       </tr>
                     </thead>
@@ -266,13 +260,9 @@ include 'includes/connect.php';
 				<?php
 				
 					echo '<tr><td><div class="input-field col s12"><label for="name">Name</label>';
-					echo '<input id="name" name="name" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';	
-
+					echo '<input id="name" name="name" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';					
 					echo '<td><div class="input-field col s12 "><label for="price" class="">Price</label>';
 					echo '<input id="price" name="price" type="text" data-error=".errorTxt02"><div class="errorTxt02"></div></td>';
-
-          echo '<td><div class="input-field col s12 "><label for="description">description</label>';
-					echo '<input id="description" name="description" type="text" data-error=".errorTxt01"><div class="errorTxt01"></div></td>';	
 
 					echo '<td><div class="input-field col s12 ">';
 					echo '
@@ -358,16 +348,11 @@ include 'includes/connect.php';
 				echo $row["id"].'_price:{
 				required: true,	
 				min: 0
-				},';
-        echo $row["id"].'_description:{
-        required: true,	
-        minlength: 5,
-				maxlength: 255
-        },';				
+				},';				
 			}
 		echo '},';
 		?>
-          messages: {
+        messages: {
 			<?php
 			$result = mysqli_query($con, "SELECT * FROM items");
 			while($row = mysqli_fetch_array($result))
@@ -380,16 +365,11 @@ include 'includes/connect.php';
 				echo $row["id"].'_price:{
 				required: "Ener price of item",
 				min: "Minimum item price is Rs. 0"
-				},';		
-        echo $row["id"].'_description:{
-        required: "Ener item description",
-        minlength: "Minimum length is 5 characters",
-				maxlength: "Maximum length is 255 characters"
-        },';				
+				},';				
 			}
 		echo '},';
 		?>
-        errorElement: 'div',
+        errorElement : 'div',
         errorPlacement: function(error, element) {
           var placement = $(element).data('error');
           if (placement) {
@@ -411,23 +391,15 @@ include 'includes/connect.php';
 				required: true,
 				min: 0
 			},
-    description: {
-			required: true,
-			minlength: 5
-	  	},
 	},
         messages: {
 		name: {
 				required: "Enter item name",
 				minlength: "Minimum length is 5 characters"
 			},
-		price: {
+		 price: {
 				required: "Enter item price",
 				minlength: "Minimum item price is Rs.0"
-			},
-    description: {
-				required: "Enter item description",
-				minlength: "Minimum length is 5 character"
 			},
 	},
 		errorElement : 'div',

@@ -1,3 +1,4 @@
+<!--
 <?php
 include 'includes/connect.php';
 include 'includes/wallet.php';
@@ -5,6 +6,7 @@ include 'includes/wallet.php';
 	if($_SESSION['customer_sid']==session_id())
 	{
 		?>
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,7 +133,7 @@ include 'includes/wallet.php';
                     </ul>
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <p class="user-roal"><?php echo $role;?></p>
                 </div>
             </div>
@@ -177,9 +179,7 @@ include 'includes/wallet.php';
                     </ul>
                 </li>					
             <li class="bold"><a href="details.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Edit Details</a>
-            </li>
-            <li class="bold"><a href="Customize.php" class="waves-effect waves-cyan"><i class="mdi-social-person"></i> Customize Cake</a>
-            </li>								
+            </li>				
         </ul>
         <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
         </aside>
@@ -210,42 +210,46 @@ include 'includes/wallet.php';
                         <th>Name</th>
                         <th>Image</th>
                         <th>Item Price/Piece</th>
-                        <th>Description</th>
                         <th>Quantity</th>
                       </tr>
                     </thead>
+
                     <tbody>
-				              <?php
-				                $result = mysqli_query($con, "SELECT * FROM items where not deleted;");
-				                while($row = mysqli_fetch_array($result))
-				                {
-					                echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td><td>'.$row["description"].'</td>';                      
-					                echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
-					                echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
-				                }
-				              ?>
+				<?php
+				$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
+				while($row = mysqli_fetch_array($result))
+				{
+					echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td>';                      
+					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
+					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
+				}
+				?>
                     </tbody>
-                  </table>
-                </div>
-                <div class="input-field col s12">
-                <i class="mdi-editor-mode-edit prefix"></i>
-                <textarea id="description" name="description" class="materialize-textarea"></textarea>
-                <label for="description" class="">Any note(optional)</label>
-			        </div>
-			        <div>
-			          <div class="input-field col s12">
-                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
-                    <i class="mdi-content-send right"></i>
-                  </button>
-                </div>
+</table>
               </div>
-		        </form>
+			  <div class="input-field col s12">
+              <i class="mdi-editor-mode-edit prefix"></i>
+              <textarea id="description" name="description" class="materialize-textarea"></textarea>
+              <label for="description" class="">Any note(optional)</label>
+			  </div>
+			  <div>
+			  <div class="input-field col s12">
+                              <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Order
+                                <i class="mdi-content-send right"></i>
+                              </button>
+                            </div>
+            </div>
+			</form>
             <div class="divider"></div>
+            
           </div>
         </div>
         <!--end container-->
+
       </section>
       <!-- END CONTENT -->
+
+
   </div>
   <!-- END MAIN -->
 
@@ -331,6 +335,7 @@ include 'includes/wallet.php';
 </body>
 
 </html>
+
 <?php
 	}
 	else

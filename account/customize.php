@@ -428,7 +428,7 @@ include 'includes/wallet.php';
 
 </html>
 <?php
-	}
+	 }
 	else
 	{
 		if($_SESSION['admin_sid']==session_id())

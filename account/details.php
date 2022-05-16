@@ -134,7 +134,7 @@ $username = $row['username'];
                     </ul>
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown"><?php echo $name;?> <i class="mdi-navigation-arrow-drop-down right"></i></a>
                     <p class="user-roal"><?php echo $role;?></p>
                 </div>
             </div>
@@ -212,7 +212,7 @@ $username = $row['username'];
               <div class="col s12 m4 l3">
                 <h4 class="header">Details</h4>
               </div>
-            <div>
+<div>
                 <div class="card-panel">
                   <div class="row">
                     <form class="formValidate" id="formValidate" method="post" action="routers/details-router.php" novalidate="novalidate"class="col s12">
