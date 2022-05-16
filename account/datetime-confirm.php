@@ -1,10 +1,39 @@
 <?php  
-session_start(); 
-if(isset($_SESSION['admin_sid']) || isset($_SESSION['customer_sid']))
-{
-	header("location:index.php");
-}
+session_start();
+date_default_timezone_set("Asia/Tokyo"); 
+
+// slicing current date to int 
+$date = date('y-m-d');
+$year = (int)substr($date,0,2);
+$month = (int)substr($date,3,5);
+$day = (int)substr($date,6);
+
+//getting variables
+$dateinput = $_POST["date_delivery"];
+$order = $_POST["order_type"];
+
+//setting as session variables
+$_SESSION["date_delivery"] = $dateinput;
+
+
+//sliicing input date to int
+$yearinput = (int)substr($dateinput,2,4);
+$monthinput = (int)substr($dateinput,5,7);
+$dayinput = (int)substr($dateinput,8);
+$days= $dayinput - $day;
+
+//assigning string for the warning
+if ($days==0){
+  $set="today";
+  }
 else{
+  $set="tomorrow";
+}
+
+
+if ($monthinput == $month && $days < 2)
+{
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +42,7 @@ else{
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>Register</title>
+  <title>Order</title>
 
   <!-- Favicons-->
   <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
@@ -32,6 +61,7 @@ else{
     <!-- Custome CSS-->    
     <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/layouts/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="css/drop-down.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
 
@@ -76,8 +106,14 @@ else{
   .right-alert textarea.materialize-textarea + label:after{
       right:70px;
   }
-  </style> 
+
+
+
+</style> 
 </head>
+
+
+
 
 <body class="cyan">
   <!-- Start Page Loading -->
@@ -92,54 +128,40 @@ else{
 
   <div id="login-page" class="row">
     <div class="col s12 z-depth-4 card-panel">
-      <form class="formValidate" id="formValidate" method="post" action="routers/register-router.php" novalidate="novalidate" class="col s12">
+     
         <div class="row">
           <div class="input-field col s12 center">
-            <h4>Register</h4>
-            <p class="center">Join us now!</p>
+            <h4><?php 
+              echo "Your order is set for ".$set.".<br>";  
+    
+            ?>
+            </h4>
+            <h5 class="center col s12">Rush orders depends on ingridients available. Please contact us before you proceed win the order<br>Kaye Bakes<br>00000</h5>
           </div>
         </div>
-        <div class="row margin">
+
+		
+        <div class="row center">
           <div class="input-field col s12">
-            <i class="mdi-social-person-outline prefix"></i>
-            <input name="username" id="username" type="text"  data-error=".errorTxt1">
-            <label for="username" class="center-align">Username</label>
-			<div class="errorTxt1"></div>			
+          
+           <a href="http://neilsoneja/Kaye-Bakes-2"  class="center btn waves-effect waves-light "> Back to Homepage</a>
+
+           <?php
+           if($order === "menu"){
+
+           echo '<a href="from_menu.php" class="center btn waves-effect waves-light ">Proceed with order</a>' ;
+           } 
+           else{
+            echo '<a href="customize-order.php" class="center btn waves-effect waves-light ">Proceed with order</a>';
+
+           }  
+
+           
+          ?>
           </div>
+          
         </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-social-person prefix"></i>
-            <input name="name" id="name" type="text" data-error=".errorTxt2">
-            <label for="name" class="center-align">Name</label>
-			<div class="errorTxt2"></div>			
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-action-lock-outline prefix"></i>
-            <input name="password" id="password" type="password" data-error=".errorTxt3">
-            <label for="password">Password</label>
-			<div class="errorTxt3"></div>			
-          </div>
-        </div>
-        <div class="row margin">
-          <div class="input-field col s12">
-            <i class="mdi-communication-phone prefix"></i>
-            <input name="phone" id="phone" type="number" data-error=".errorTxt4">
-            <label for="phone">Phone</label>
-			<div class="errorTxt4"></div>			
-          </div>
-        </div>		
-        <div class="row">
-          <div class="input-field col s12">
-			<a href="javascript:void(0);" onclick="document.getElementById('formValidate').submit();" class="btn waves-effect waves-light col s12">Login</a>
-          </div>
-          <div class="input-field col s12">
-            <p class="margin center medium-small sign-up">Already have an account? <a href="login.php">Login</a></p>
-          </div>
-        </div>
-      </form>
+      
     </div>
   </div>
 
@@ -157,62 +179,26 @@ else{
   <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
      <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
+    <script type="text/javascript" src="js/drop-down.js"></script>
      
       <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
-    <script type="text/javascript" src="js/custom-script.js"></script>
-    <script type="text/javascript">
-    $("#formValidate").validate({
-        rules: {
-            username: {
-                required: true,
-                minlength: 5
-            },
-            name: {
-                required: true,
-                minlength: 5				
-            },
-			password: {
-				required: true,
-				minlength: 5
-			},
-            phone: {
-				required: true,
-				minlength: 4
-			},
-        },
-        messages: {
-            username: {
-                required: "Enter username",
-                minlength: "Minimum 5 characters are required."
-            },
-            name: {
-                required: "Enter name",
-                minlength: "Minimum 5 characters are required."
-            },
-			password: {
-				required: "Enter password",
-				minlength: "Minimum 5 characters are required."
-			},
-            phone:{
-				required: "Specify contact number.",
-				minlength: "Minimum 4 characters are required."
-			},		
-        },
-        errorElement : 'div',
-        errorPlacement: function(error, element) {
-          var placement = $(element).data('error');
-          if (placement) {
-            $(placement).append(error)
-          } else {
-            error.insertAfter(element);
-          }
-        }
-     });
-    </script>
+    
 </body>
 </html>
 <?php
+}
+else{
+
+  if ($order === "menu")
+    {
+      header("Location: /Kaye-Bakes-2/account/from_menu.php"); 
+      exit();
+    }
+  else{
+      header("Location: /Kaye-Bakes-2/account/customize-order.php"); 
+      exit();
+  }
 }
 ?>
