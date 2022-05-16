@@ -50,10 +50,7 @@ $newfilename = "query" . '.' . end($temp);
     
     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     
-    //search.py
-
-    $result = json_decode(shell_exec('python3 search.py'), true);
-    echo $result;
+   
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
