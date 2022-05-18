@@ -1,9 +1,8 @@
-$ workon cv
-$ pyhton3 pip install numpy
-$ pyhton3 pip install opencv-contrib-python
-$ pyhton3 pip install imutils
-$ pyhton3 pip install vptree
+> pyhton3 pip install numpy
+> pyhton3 pip install opencv-contrib-python
+> pyhton3 pip install imutils
+> pyhton3 pip install vptree
 
-$ python3 index_images.py --images images --tree vptree.pickle --hashes hashes.pickle
+> python3 index_images.py 
 
-$python3 search.py --tree vptree.pickle --hashes hashes.pickle --query new.jpg --distance 20	
+>python3 search.py -q query1.jpg 	

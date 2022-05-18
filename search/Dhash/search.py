@@ -7,13 +7,13 @@ import time
 import cv2
 
 ap = argparse.ArgumentParser()
-ap.add_argument("-t", "--tree", required=True, type=str,
+ap.add_argument("-t", "--tree", default="vptree.pickle", type=str,
 	help="path to pre-constructed VP-Tree")
-ap.add_argument("-a", "--hashes", required=True, type=str,
+ap.add_argument("-a", "--hashes", default="hashes.pickle", type=str,
 	help="path to hashes dictionary")
 ap.add_argument("-q", "--query", required=True, type=str,
 	help="path to input query image")
-ap.add_argument("-d", "--distance", type=int, default=10,
+ap.add_argument("-d", "--distance", type=int, default=20,
 	help="maximum hamming distance")
 args = vars(ap.parse_args())
 

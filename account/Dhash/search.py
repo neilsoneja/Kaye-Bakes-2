@@ -15,9 +15,9 @@ ap.add_argument("-t", "--tree",  type=str, default="vptree.pickle",
 	help="path to pre-constructed VP-Tree")
 ap.add_argument("-a", "--hashes",  type=str, default="hashes.pickle",
 	help="path to hashes dictionary")
-ap.add_argument("-q", "--query",  type=str, 
+ap.add_argument("-q", "--query",  type=str, required= True,  
 	help="path to input query image")
-ap.add_argument("-d", "--distance", type=int, default=20,
+ap.add_argument("-d", "--distance", type=int, default=22,
 	help="maximum hamming distance")
 args = vars(ap.parse_args())
 
@@ -25,9 +25,9 @@ print(" loading VP-Tree and hashes...")
 tree = pickle.loads(open(args["tree"], "rb").read())
 hashes = pickle.loads(open(args["hashes"], "rb").read())
 
-#image = cv2.imread(args["query"])
-path = r'C:\Users\Drive\Documents\GitHub\Kaye-Bakes-2\account\Dhash\query2.jpg'
-image = cv2.imread(path)
+image = cv2.imread(args["query"])
+#path = r'C:\Users\Drive\Documents\GitHub\Kaye-Bakes-2\account\Dhash\query2.jpg'
+image = cv2.imread(image)
 
 #image=resize(image)
 #cv2.imshow("Query", image)
