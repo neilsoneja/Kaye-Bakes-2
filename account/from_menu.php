@@ -1,10 +1,32 @@
 <?php
+session_start();
+
 $dbservername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
 $dbName = "kaye-bakes";
 
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
+
+if(isset($_POST["add_to_cart"]))
+{
+    if(isset($_SESSION["cart"]))
+    {
+
+    }
+    else 
+    {
+        $session_array = array(
+          'product_id' => $_GET['product_id'],
+          "product_name" => $_GET['product_name'],
+          "price" => $_GET['price'],
+          "quantity" => $_GET['quantity']
+        );
+        $_SESSION['cart'][] = $session_array;
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +68,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
       <div class="menu">
         <h1>Our Menu</h1>
-        <form action="cart.php" method="post" id=cart>
+        <form action="get" action="cart.php?product_id=<?php$row['product_id'];?>">
           <div class="product-container">
             <div class="card">
               <?php
@@ -61,14 +83,14 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                     <h3>".$row['product_name']."</h3>
                     <p hidden>".$row['product_desc']."</p>
                     <p>Php ".$row['price']."</p>
-                    <button type='submit' form='cart' value='add-to-cart'>Add to Cart</button>
+                    <input type='submit' name='add_to_cart' class'btn btn-success' value='Add to Cart'>
                   </div></a>";
                   }
                 }
               ?>
-              </form>
             </div>
           </div> 
+          </form>
         </div>
       </div> 
     </div>        

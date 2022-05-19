@@ -78,7 +78,7 @@ if(isset($_POST["add_to_cart"]))
       <div class="product">
           <div class="product-page-container">
             <div class="card">
-                <form action="post" action="cart.php?action=add&product_id=<?php echo $row['product_id'];?>">
+                <form action="post" action="cart.php?product_id=<?php echo $row['product_id'];?>">
               <?php
                 $title = mysqli_real_escape_string($conn, $_GET['title']);
                 $image = mysqli_real_escape_string($conn, $_GET['image']);
