@@ -26,7 +26,6 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="css/drag-drop.css" type="text/css" rel="stylesheet" >
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
@@ -218,8 +217,6 @@
                 </div>
 
 
-
-
             <!--end container-->
 
             <div class="divider"></div>
@@ -228,7 +225,7 @@
       <!-- END CONTENT -->
     </div>
     <!-- END WRAPPER -->
-
+   
   </div>
   <!-- END MAIN -->
 
@@ -265,12 +262,15 @@
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>	
-	<script type="text/javascript" src="js/plugins/formatter/jquery.formatter.min.js"></script>   
+	<script type="text/javascript" src="js/plugins/formatter/jquery.formatter.min.js"></script>  
+    
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.min.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
     <script type="text/javascript" src="js/custom-script.js"></script>
 	<script type="text/javascript">
+ 
+
     $("#formValidate").validate({
         rules: {
             address: {
