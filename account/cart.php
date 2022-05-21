@@ -78,12 +78,9 @@ if(isset($_POST["add_to_cart"]))
       <div class="product">
           <div class="product-page-container">
             <div class="card">
-                <form action="post" action="cart.php?product_id=<?php echo $row['product_id'];?>">
+                <form action="post" action="cart.php?action=add&product_id=<?php echo $row['product_id'];?>">
               <?php
-                $title = mysqli_real_escape_string($conn, $_GET['title']);
-                $image = mysqli_real_escape_string($conn, $_GET['image']);
-
-                $sql = "SELECT * FROM products WHERE product_name='$title' and image_url='$image'";
+                 $sql = "SELECT * FROM products WHERE product_name='$title' and image_url='$image'";
                 $result = mysqli_query($conn, $sql);
                 $query_results = mysqli_num_rows($result);
     
@@ -97,7 +94,7 @@ if(isset($_POST["add_to_cart"]))
                                 </td>
                                 
                                 <td class='text'>
-                                  <h3>".$row['product_name']."</h3>
+                                  <h3>".$row['product_name']."</h3>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
                                   <p>".$row['product_desc']."</p>
                                   <p>Php ".$row['price']."</p>
                                   <p hidden>".$row['product_id']."</p>

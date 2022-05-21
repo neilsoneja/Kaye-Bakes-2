@@ -146,12 +146,30 @@ header{
   box-shadow: 0px 0px 2px 2px  #25190d;;
 }
 
-/*----------Index(Main Menu)----------*/
+/*----------Search Bar----------*/
 
-.wrapper .main_content .menu h1{
-  font-size: 50px;
+.wrapper .main_content .search{
+  padding: 10px;
   text-align: center;
 }
+
+.wrapper .main_content .search ::placeholder{
+  font-size: 20px;
+  color: #25190d;
+}
+
+.wrapper .main_content .search input{
+  font-size: 20px;
+  height: 50px;
+  width: 800px;
+  border-radius: 20px;
+  padding: 0px 20px;
+  background-color: #cbc289;
+  box-shadow: 0px 2px 2px 2px  #25190d;;
+}
+
+/*----------Index(Main Menu)----------*/
+
 
 .wrapper .main_content .product-container .card{
   margin-left: 55px;
