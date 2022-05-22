@@ -1,0 +1,33 @@
+.ground-brown {
+    background-color: #bbb079 !important;
+}
+
+.ground-color {
+    color: #bbb079;
+  }
+
+.ground-dark {
+    background-color: #312519 !important;
+}
+@font-face {
+    font-family: 'Sailyme'; 
+    src: url('/Kaye-Bakes-2/fonts/Sailyme.ttf'); 
+}
+
+@font-face {
+    font-family: 'bebas'; 
+    src: url('/Kaye-Bakes-2/fonts/bebas-webfont.ttf'); 
+}
+
+.sailyme {
+    font-family: 'Sailyme';
+}
+
+.bebas {
+    font-family: 'bebas';
+}
+
+
+.newbtn {
+    background-color: #bbb079;
+ }
