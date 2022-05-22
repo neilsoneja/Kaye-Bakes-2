@@ -7,26 +7,6 @@ $dbPassword = "";
 $dbName = "kaye-bakes";
 
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
-
-if(isset($_POST["add_to_cart"]))
-{
-    if(isset($_SESSION["cart"]))
-    {
-
-    }
-    else 
-    {
-        $session_array = array(
-          'product_id' => $_GET['product_id'],
-          "product_name" => $_GET['product_name'],
-          "price" => $_GET['price'],
-          "quantity" => $_GET['quantity']
-        );
-        $_SESSION['cart'][] = $session_array;
-    }
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -71,10 +51,12 @@ if(isset($_POST["add_to_cart"]))
       <div class="search">
       <form action="routers/search.php" method="POST">
         <input type="text" name="search" placeholder="Search">
+        <button type="submit" name="submit-search"></button>
+      </form>
       </div>
 
       <div class="menu">
-        <form action="get" action="cart.php?product_id=<?php$row['product_id'];?>">
+        <form method="post" action="routers/add-to-cart.php?product_id=<?php$row['product_id'];?>">
           <div class="product-container">
             <div class="card">
               <?php
@@ -86,9 +68,10 @@ if(isset($_POST["add_to_cart"]))
                   while ($row = mysqli_fetch_assoc($result)) {
                     echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'><div class='product-box'>
                     <img src='product_images/".$row['image_url']."' >
+                    <p hidden>".$row['product_id']."</p>
                     <h3>".$row['product_name']."</h3>
                     <p hidden>".$row['product_desc']."</p>
-                    <p>Php ".$row['price']."</p>
+                    <p>Php ".number_format($row['price'])."</p>
                     <button type='submit' name='add-to-cart'>Add to Cart</button>
                   </div></a>";
                   }
@@ -98,7 +81,6 @@ if(isset($_POST["add_to_cart"]))
           </div> 
           </form>
         </div>
-        </form>
       </div> 
     </div>        
   </div>

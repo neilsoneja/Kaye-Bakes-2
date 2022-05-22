@@ -5,35 +5,6 @@ $dbUsername = "root";
 $dbPassword = "";
 $dbName = "kaye-bakes";
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
-
-if(isset($_POST["add_to_cart"]))
-{
-    if(isset($_SESSION["cart"]))
-    {
-        $session_array_id = array_column($_SESSION['cart'], "product_id");
-    
-        if (!in_array($_GET['product_id'], $session_array_id)) {
-            $session_array = array(
-                'product_id' => $_GET['product_id'],
-                "product_name" => $_GET['product_name'],
-                "price" => $_GET['price'],
-                "quantity" => $_GET['quantity']
-              );
-              $_SESSION['cart'][] = $session_array;
-        }
-
-    }
-    else 
-    {
-        $session_array = array(
-          'product_id' => $_GET['product_id'],
-          "product_name" => $_GET['product_name'],
-          "price" => $_GET['price'],
-          "quantity" => $_GET['quantity']
-        );
-        $_SESSION['cart'][] = $session_array;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -73,43 +44,11 @@ if(isset($_POST["add_to_cart"]))
 
   <div class="main_content">
     <div class="row">
-      <div class="header">Welcome!!</div> 
-      
-      <div class="product">
-          <div class="product-page-container">
-            <div class="card">
-                <form action="post" action="cart.php?action=add&product_id=<?php echo $row['product_id'];?>">
-              <?php
-                 $sql = "SELECT * FROM products WHERE product_name='$title' and image_url='$image'";
-                $result = mysqli_query($conn, $sql);
-                $query_results = mysqli_num_rows($result);
-    
-                if ($query_results > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='product-box'>
-                            <table>
-                              <tr>
-                                <td class='image'>
-                                  <img src='product_images/".$row['image_url']."' >
-                                </td>
-                                
-                                <td class='text'>
-                                  <h3>".$row['product_name']."</h3>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                  <p>".$row['product_desc']."</p>
-                                  <p>Php ".$row['price']."</p>
-                                  <p hidden>".$row['product_id']."</p>
-                                  <input type='submit' name='add_to_cart' class'btn btn-success' value='Add to Cart'>
-                                  </div>
-                                </td>
-                              </tr>
-                            </table>
-                          </div>";
-                  }
-                }
-              ?>
-              </form>
-            </div>
-          </div> 
+      <div class="header">Cart</div> 
+        <div class="">
+            <?php
+                var_dump($_SESSION['cart'])
+            ?>
         </div>
       </div> 
     </div>        
