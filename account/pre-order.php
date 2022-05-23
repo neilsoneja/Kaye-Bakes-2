@@ -2,6 +2,7 @@
 session_start(); 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +27,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-datepicker.min.css"> 
     <link rel="stylesheet" href="css/bootstrap/signin.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
- 
-
+    
   <!-- CSS -->
   <style>
     .bd-placeholder-img {
@@ -85,13 +85,13 @@ session_start();
 </head>
 
 <body class="text-center " >
-  <!-- Start Page Loading -->
+  <!-- Start Page Loading 
   <div id="loader-wrapper">
-      <div id="loader"></div>        
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
-  </div>
-  <!-- End Page Loading -->
+    <div id="loader"></div>        
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+   End Page Loading -->
 
   
   <main class="form-signin w-100 m-auto">
@@ -122,11 +122,17 @@ session_start();
           -->
           <div class="form-floating mb-3">
             <div name="date_delivery" class="input-group date" >
-              <select name="order_type" id="order_type"  class="form-control" >
+              
+              <select name="order_type" id="order_type"  class="form-control" required>
                 <option value="" disabled selected hidden>Order Type</option>
                 <option value="menu">Choose from the Menu</option>
                 <option value="custom">Customized Cake</option>
                 </select>
+                <span class="input-group-append">
+                  <span class="input-group-text bg-white d-block">
+                      <i class="fa fa-cupcake"></i>
+                  </span>
+              </span>
             </div>
             </div>
 
@@ -134,7 +140,7 @@ session_start();
           <div class="form-floating mb-3">
           
                 <div name="date_delivery" class="input-group date" id="datepicker">
-                    <input type="text" class="form-control" name="date_delivery" id="date_delivery" placeholder="Delivery Date">
+                    <input type="text" class="form-control" name="date_delivery" id="date_delivery" placeholder="Delivery Date" required>
                     <span class="input-group-append">
                         <span class="input-group-text bg-white d-block">
                             <i class="fa fa-calendar"></i>
@@ -143,23 +149,19 @@ session_start();
                 </div>
             </div>
         
-          <!--
-          <div class="row margin">
-            <div class="input-field col s12">
-              <input name="date_delivery" id="date_delivery" type="date"  required>
-              <label for="datetime_delivery"></label>		
-            </div>
-          </div>
-          -->
 
-          <button class="ground-dark w-100 btn btn-lg btn-primary mb-3" type="submit">Order</button>
+          
+          <button class="ground-dark w-100 btn btn-lg btn-secondary mb-3" type="submit">Order</button>
 
-            
-          </div>
-        </form>
-  
+           
+          
+          </form>
+
+
+
+
+        </div>
       </div>
-    </div>
   </main>
 
 
@@ -177,9 +179,9 @@ session_start();
   <!--bootstrap-->
   <script type="text/javascript" src="js/bootstrap/bootstrap-datepicker.min.js"></script>
  
+   <!--custom-->
+   <script type="text/javascript" src="js/own-script.js"></script>
 
-  
-    
     
     <script type="text/javascript">
         $(function() {
