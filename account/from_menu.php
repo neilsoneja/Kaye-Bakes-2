@@ -56,7 +56,6 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
       </div>
 
       <div class="menu">
-        <form method="post" action="routers/add-to-cart.php?product_id=<?php$row['product_id'];?>">
           <div class="product-container">
             <div class="card">
               <?php
@@ -65,21 +64,28 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                 $query_results = mysqli_fetch_array($result);
     
                 if ($query_results > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'><div class='product-box'>
-                    <img src='product_images/".$row['image_url']."' >
-                    <p hidden>".$row['product_id']."</p>
-                    <h3>".$row['product_name']."</h3>
-                    <p hidden>".$row['product_desc']."</p>
-                    <p>Php ".number_format($row['price'])."</p>
-                    <button type='submit' name='add-to-cart'>Add to Cart</button>
-                  </div></a>";
-                  }
+                  while ($row = mysqli_fetch_assoc($result)) {?>
+                    
+                    <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
+                    <img src="product_images/<?=$row['image_url']?>" style='height: 250px'>
+                    <p class="text-center"><?=$row['product_name'];?></p>
+                    <p hidden><?=$row['product_desc'];?></p>
+                    <p class="text-center">Php  <?=number_format($row['price']);?></p>
+
+                    <input type="hidden" name="product_name" value="<?= $row['product_name']?>">
+                    <input type="hidden" name="product_desc" value="<?= $row['product_desc']?>">
+                    <input type="hidden" name="price" value="<?= $row['price']?>">
+                    <input type="number" name="quantity" value="1" hidden>
+                    <input type="submit" name="add-to-cart" value="Add To Cart">
+                    </form>
+                    <?php }
                 }
+                
+
               ?>
             </div>
           </div> 
-          </form>
+
         </div>
       </div> 
     </div>        

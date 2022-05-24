@@ -30,7 +30,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
   <div class="sidebar">
     <h2>Kaye Bakes</h2>
     <ul>
-      <li><a href="index.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
+      <li><a href="from_menu.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
       <li><a href="#"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
       <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>
       <li><a href="upload.php"><i class="fas fa-project-diagram"></i>Custom</a></li>
@@ -47,7 +47,42 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
       <div class="header">Cart</div> 
         <div class="">
             <?php
-                var_dump($_SESSION['cart'])
+                $output = "";
+
+                $output .= "
+                    <table class='table table-bordered table-stripped'>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Action</th>
+                        <tr>
+                    ";
+
+                    if (!empty($_SESSION['cart'])) {
+
+                        foreach ($_SESSION['cart'] as $key => $value) {
+
+                            $output .= "
+                                <tr>
+                                    <td>".$value['product_id']."</td>
+                                    <td>".$value['product_name']."</td>
+                                    <td>".$value['product_desc']."</td>
+                                    <td>".$value['price']."</td>
+                                    <td>".$value['quantity']."</td>
+                                    <td>Php  ".number_format($value['price'] * $value['quantity'])."</td>
+                                    <td>
+                                        <a href='cart.php?action=remove&product_id=".$value['product_id']."'>
+                                            <button>Remove</button>
+                                        </a>
+                                    </td>
+                                <tr>
+                            ";
+                        }
+                    }
             ?>
         </div>
       </div> 
