@@ -16,7 +16,7 @@ class Searcher:
 			reader = csv.reader(f)
 			i = 0
 			for row in reader:
-				d = 11.0
+				d = 30.0
 				try:
 					features = [float(x) for x in row[1:]]
 					d = self.chi2_distance(features, queryFeatures)
