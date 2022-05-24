@@ -1,6 +1,6 @@
 <?php  
 session_start(); 
-
+$_SESSION['upload-message']=""
 ?>
 
 <!DOCTYPE html>
@@ -184,8 +184,11 @@ session_start();
 
     
     <script type="text/javascript">
-        $(function() {
-            $('#datepicker').datepicker();
+        var date = new Date();
+        date.setDate(date.getDate());
+
+        $('#datepicker').datepicker({ 
+         startDate: date
         });
     </script>
   
