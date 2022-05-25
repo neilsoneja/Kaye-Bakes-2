@@ -17,6 +17,7 @@ if (isset($_POST['add-to-cart'])) {
         if(!in_array($_GET['product_id'], $session_array_id)) {
             $session_array = array (
                 'product_id'=> $_GET['product_id'],
+                "image_url" => $_POST['image_url'],
                 "product_name" => $_POST['product_name'],
                 "product_desc" => $_POST['product_desc'],
                 "price" => $_POST['price'],
@@ -29,6 +30,7 @@ if (isset($_POST['add-to-cart'])) {
     } else {
         $session_array = array (
             'product_id'=> $_GET['product_id'],
+            "image_url" => $_POST['image_url'],
             "product_name" => $_POST['product_name'],
             "product_desc" => $_POST['product_desc'],
             "price" => $_POST['price'],

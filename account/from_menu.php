@@ -32,8 +32,8 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
   <div class="sidebar">
     <h2>Kaye Bakes</h2>
     <ul>
-      <li><a href="index.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
-      <li><a href="#"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
+      <li><a href="from_menu.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
+      <li><a href="cart.php"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
       <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>
       <li><a href="upload.php"><i class="fas fa-project-diagram"></i>Custom</a></li>
     </ul> 
@@ -65,13 +65,18 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
     
                 if ($query_results > 0) {
                   while ($row = mysqli_fetch_assoc($result)) {?>
-                    
+
+                    <?php
+                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'>"
+                    ?>
+
                     <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
                     <img src="product_images/<?=$row['image_url']?>" style='height: 250px'>
-                    <p class="text-center"><?=$row['product_name'];?></p>
+                    <p><?=$row['product_name'];?></p>
                     <p hidden><?=$row['product_desc'];?></p>
-                    <p class="text-center">Php  <?=number_format($row['price']);?></p>
+                    <p>Php  <?=number_format($row['price']);?></p>
 
+                    <input type="hidden" name="image_url" value="<?= $row['image_url']?>">
                     <input type="hidden" name="product_name" value="<?= $row['product_name']?>">
                     <input type="hidden" name="product_desc" value="<?= $row['product_desc']?>">
                     <input type="hidden" name="price" value="<?= $row['price']?>">
@@ -90,6 +95,5 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
       </div> 
     </div>        
   </div>
-
 </body>
 </html>

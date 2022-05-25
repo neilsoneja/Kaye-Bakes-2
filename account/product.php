@@ -59,8 +59,8 @@ if(isset($_POST["add_to_cart"]))
   <div class="sidebar">
     <h2>Kaye Bakes</h2>
     <ul>
-      <li><a href="index.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
-      <li><a href="#"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
+      <li><a href="from_menu.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
+      <li><a href="Cart.php"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
       <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>
       <li><a href="upload.php"><i class="fas fa-project-diagram"></i>Custom</a></li>
     </ul> 
@@ -78,7 +78,6 @@ if(isset($_POST["add_to_cart"]))
       <div class="product">
           <div class="product-page-container">
             <div class="card">
-                <form action="post" action="cart.php?action=add&product_id=<?php echo $row['product_id'];?>">
               <?php
                 $title = mysqli_real_escape_string($conn, $_GET['title']);
                 $image = mysqli_real_escape_string($conn, $_GET['image']);
@@ -88,26 +87,21 @@ if(isset($_POST["add_to_cart"]))
                 $query_results = mysqli_num_rows($result);
     
                 if ($query_results > 0) {
-                  while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='product-box'>
-                            <table>
-                              <tr>
-                                <td class='image'>
-                                  <img src='product_images/".$row['image_url']."' >
-                                </td>
-                                
-                                <td class='text'>
-                                  <h3>".$row['product_name']."</h3>
-                                  <p>".$row['product_desc']."</p>
-                                  <p>Php ".$row['price']."</p>
-                                  <p hidden>".$row['product_id']."</p>
-                                  <input type='submit' name='add_to_cart' class'btn btn-success' value='Add to Cart'>
-                                  </div>
-                                </td>
-                              </tr>
-                            </table>
-                          </div>";
-                  }
+                  while ($row = mysqli_fetch_assoc($result)) {?>
+                    <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
+                    <img src="product_images/<?=$row['image_url']?>" style='height: 250px'>
+                    <p><?=$row['product_name'];?></p>
+                    <p hidden><?=$row['product_desc'];?></p>
+                    <p>Php  <?=number_format($row['price']);?></p>
+
+                    <input type="hidden" name="image_url" value="<?= $row['image_url']?>">
+                    <input type="hidden" name="product_name" value="<?= $row['product_name']?>">
+                    <input type="hidden" name="product_desc" value="<?= $row['product_desc']?>">
+                    <input type="hidden" name="price" value="<?= $row['price']?>">
+                    <input type="number" name="quantity" value="1" hidden>
+                    <input type="submit" name="add-to-cart" value="Add To Cart">
+                    </form>
+                    <?php }
                 }
               ?>
               </form>

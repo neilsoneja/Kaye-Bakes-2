@@ -31,7 +31,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
     <h2>Kaye Bakes</h2>
     <ul>
       <li><a href="from_menu.php"><i class="fas fa-cake-candles"></i>Menu</a></li>
-      <li><a href="#"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
+      <li><a href="cart.php"><i class="fas fa-cart-shopping"></i></i>Orders</a></li>
       <li><a href="#"><i class="fas fa-address-card"></i>About</a></li>
       <li><a href="upload.php"><i class="fas fa-project-diagram"></i>Custom</a></li>
     </ul> 
@@ -45,21 +45,22 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
   <div class="main_content">
     <div class="row">
       <div class="header">Cart</div> 
-        <div class="">
+        <div class="text-center">
             <?php
-                $output = "";
 
+                $total = 0;
+                $output = "";
                 $output .= "
                     <table class='table table-bordered table-stripped'>
                         <tr>
-                            <th>ID</th>
+                            <th>Image</th>
                             <th>Name</th>
                             <th>Description</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
                             <th>Action</th>
-                        <tr>
+                        </tr>
                     ";
 
                     if (!empty($_SESSION['cart'])) {
@@ -68,7 +69,9 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
                             $output .= "
                                 <tr>
-                                    <td>".$value['product_id']."</td>
+                                    <td>
+                                      <img src='product_images/".$value['image_url']."' style='height: 250px'>
+                                    </td>
                                     <td>".$value['product_name']."</td>
                                     <td>".$value['product_desc']."</td>
                                     <td>".$value['price']."</td>
@@ -79,15 +82,50 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                             <button>Remove</button>
                                         </a>
                                     </td>
-                                <tr>
+                                </tr>
                             ";
+
+
+                            $total = $total + $value['quantity'] * $value['price'];
                         }
+
+                        $output .= "
+                        <tr>
+                          <td colspan='3'></td>
+                          <td></b>Total Price</b></td>
+                          <td>".number_format($total)."</td>
+                          <td>
+                            <a href='from_menu.php?action=clear_all'>
+                            <button>Clear All</button>
+                            </a>
+                          </td>
+                        </tr>
+                        ";
+
                     }
-            ?>
+                  echo $output
+                  ?>
         </div>
       </div> 
     </div>        
   </div>
+
+  <?php
+    if(isset($_GET['action'])) {
+
+      if ($_GET['action'] == "clear_all") {
+        unset($_SESSION['cart']);
+      }
+
+      if ($_GET['action'] == "remove") {
+        foreach($_SESSION['cart'] as $key => $value) {
+          if ($value['product_id'] == $_GET['product_id']) {
+            unset($_SESSION['cart'][$key]);
+          }
+        }
+      }
+    }
+  ?>
 
 </body>
 </html>
