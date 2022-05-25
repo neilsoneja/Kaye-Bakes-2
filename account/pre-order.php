@@ -1,10 +1,12 @@
 <?php  
 session_start(); 
-
+$_SESSION['upload-message']=""
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,123 +14,155 @@ session_start();
   <title>Order</title>
 
   <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
+    <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
   <!-- For iPhone -->
-  <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
+    <meta name="msapplication-TileColor" content="#00bcd4">
+    <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
   <!-- For Windows Phone -->
 
+  <!-- CORE CSS--> 
+    <link rel="stylesheet" type="text/css"  media="screen,projection" href="css/new.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-datepicker.min.css"> 
+    <link rel="stylesheet" href="css/bootstrap/signin.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    
+  <!-- CSS -->
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
 
-  <!-- CORE CSS-->
-  
-  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <!-- Custome CSS-->    
-    <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="css/layouts/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <link href="css/drop-down.css" type="text/css" rel="stylesheet" media="screen,projection">
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
 
-  <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
 
-    <style type="text/css">
-  .input-field div.error{
-    position: relative;
-    top: -1rem;
-    left: 0rem;
-    font-size: 0.8rem;
-    color:#FF4081;
-    -webkit-transform: translateY(0%);
-    -ms-transform: translateY(0%);
-    -o-transform: translateY(0%);
-    transform: translateY(0%);
-  }
-  .input-field label.active{
-      width:100%;
-  }
-  .left-alert input[type=text] + label:after, 
-  .left-alert input[type=password] + label:after, 
-  .left-alert input[type=email] + label:after, 
-  .left-alert input[type=url] + label:after, 
-  .left-alert input[type=time] + label:after,
-  .left-alert input[type=date] + label:after, 
-  .left-alert input[type=datetime-local] + label:after, 
-  .left-alert input[type=tel] + label:after, 
-  .left-alert input[type=number] + label:after, 
-  .left-alert input[type=search] + label:after, 
-  .left-alert textarea.materialize-textarea + label:after{
-      left:0px;
-  }
-  .right-alert input[type=text] + label:after, 
-  .right-alert input[type=password] + label:after, 
-  .right-alert input[type=email] + label:after, 
-  .right-alert input[type=url] + label:after, 
-  .right-alert input[type=time] + label:after,
-  .right-alert input[type=date] + label:after, 
-  .right-alert input[type=datetime-local] + label:after, 
-  .right-alert input[type=tel] + label:after, 
-  .right-alert input[type=number] + label:after, 
-  .right-alert input[type=search] + label:after, 
-  .right-alert textarea.materialize-textarea + label:after{
-      right:70px;
-  }
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
 
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
 
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
 
-</style> 
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+    </style> 
+    
 </head>
 
-<body class="cyan">
-  <!-- Start Page Loading -->
+<body class="text-center " >
+  <!-- Start Page Loading 
   <div id="loader-wrapper">
-      <div id="loader"></div>        
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
-  </div>
-  <!-- End Page Loading -->
+    <div id="loader"></div>        
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+   End Page Loading -->
 
   
-  
+  <main class="form-signin w-100 m-auto">
 
-  <div id="login-page" class="row">
-    <div class="col s12 z-depth-4 card-panel">
-      <form class="formValidate" id="formValidate" method="post" action="datetime-confirm.php"  class="col s12">
-        <div class="row">
-          <div class="input-field col s12 center">
-            <h4>Welcome to Kaye Bakes!</h4>
-            <h6 class="center">How do you want your order?</h6>
-          </div>
-        </div>
+    <!--<img class="mb-4" src="/Kaye-Bakes-2/images/logo1.png" alt=""  height="57">-->
+    <h1 class="sailyme mb-5 ground-color col s12">Welcome!</h1>
 
-        <div class="row margin">
-          <div class="input-field col s12">
-            <label for="order_type" class="center-align"></label>
-            <select name="order_type" id="order_type" type="text" data-error=".errorTxt2 ">
-              <option value=""></option>
-              <option value="menu">From the Menu</option>
-              <option value="custom">Customized</option>
-            </select>
-          </div>
-        </div>
+    <div id="login-page" class="row">
+      <div class="container col s12 z-depth-4 card-panel">
+
+        <form  id="form-control" method="post" action="datetime-confirm.php"  class="col s12 ">
         
-        <div class="row margin">
-          <div class="input-field col s12">
-            <input name="date_delivery" id="date_delivery" type="date"  data-error=".errorTxt3" required>
-            <label for="datetime_delivery"></label>
-			<div class="errorTxt3"></div>			
+          <div class="form-floating  mb-4">  
+              <h5 class="bebas center">How do you want your order?</h5>
           </div>
-        </div>
-		
-        <div class="row">
-          <div class="input-field col s12">
-            <a href="javascript:void(0);" onclick="document.getElementById('formValidate').submit();" class="btn waves-effect waves-light col s12">Login</a>
+
+          <!--
+          <div class="row margin">
+            <div class="input-field col s12">
+              <label for="order_type" class="center-align"></label>
+              <select name="order_type" id="order_type" type="text" data-error=".errorTxt2 ">
+                <option value=""></option>
+                <option value="menu">From the Menuers</option>
+                <option value="custom">Customized</option>
+              </select>
+            </div>
           </div>
+          -->
+          <div class="form-floating mb-3">
+            <div name="date_delivery" class="input-group date" >
+              
+              <select name="order_type" id="order_type"  class="form-control" required>
+                <option value="" disabled selected hidden>Order Type</option>
+                <option value="menu">Choose from the Menu</option>
+                <option value="custom">Customized Cake</option>
+                </select>
+                <span class="input-group-append">
+                  <span class="input-group-text bg-white d-block">
+                      <i class="fa fa-cupcake"></i>
+                  </span>
+              </span>
+            </div>
+            </div>
+
+
+          <div class="form-floating mb-3">
           
+                <div name="date_delivery" class="input-group date" id="datepicker">
+                    <input type="text" class="form-control" name="date_delivery" id="date_delivery" placeholder="Delivery Date" required>
+                    <span class="input-group-append">
+                        <span class="input-group-text bg-white d-block">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        
+
+          
+          <button class="ground-dark w-100 btn btn-lg btn-secondary mb-3" type="submit">Order</button>
+
+           
+          
+          </form>
+
+
+
+
         </div>
-      </form>
-    </div>
-  </div>
+      </div>
+  </main>
 
 
 
@@ -136,51 +170,29 @@ session_start();
     Scripts
     ================================================ -->
 
-  <!-- jQuery Library -->
-  <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
-  <!--materialize js-->
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  <!--scrollbar-->
-  <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
-    <script type="text/javascript" src="js/drop-down.js"></script>
-     
-      <!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
-    <script type="text/javascript" src="js/custom-script.js"></script>
+  <!--bootstrap-->
+  <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>  
+
+    <!-- jQuery Library -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+
+  <!--bootstrap-->
+  <script type="text/javascript" src="js/bootstrap/bootstrap-datepicker.min.js"></script>
+ 
+   <!--custom-->
+   <script type="text/javascript" src="js/own-script.js"></script>
+
+    
     <script type="text/javascript">
-        $("#formValidate").validate({
-        rules: {
-            datetime_delivery: {
-                required: true
-            },
-            order_type: {
-                required: true			
-            },
-        },
-        messages: {
-            datetime_delivery: {
-                required: "Enter dat and time",
-              
-            },
-            order_type: {
-                required: "Select Order type",
-               
-            },
-        },
-        errorElement : 'div',
-        errorPlacement: function(error, element) {
-          var placement = $(element).data('error');
-          if (placement) {
-            $(placement).append(error)
-          } else {
-            error.insertAfter(element);
-          }
-        }
-     });
+        var date = new Date();
+        date.setDate(date.getDate());
+
+        $('#datepicker').datepicker({ 
+         startDate: date
+        });
     </script>
+  
+
 </body>
 </html>
 <?php

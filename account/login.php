@@ -110,3 +110,38 @@ else{
 <?php
 }
 ?>
+
+
+<!---
+
+<div class="menu">
+        <form method="post" action="routers/add-to-cart.php?product_id=<?php$row['product_id'];?>">
+          <div class="product-container">
+            <div class="card">
+              /*
+              <?php
+              /*
+                $sql = "SELECT * FROM products WHERE customized = 0";
+                $result = mysqli_query($conn, $sql);
+                $query_results = mysqli_fetch_array($result);
+    
+                if ($query_results > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'><div class='product-box'>
+                    <img src='product_images/".$row['image_url']."' >
+                    <p hidden>".$row['product_id']."</p>
+                    <h3>".$row['product_name']."</h3>
+                    <p hidden>".$row['product_desc']."</p>
+                    <p>Php ".number_format($row['price'])."</p>
+                    <input type='hidden' name='product_name' value='$row['product_name']'>
+                    <input type='hidden' name='product_desc' value='$row['product_desc']'>
+                    <input type='hidden' name='price' value='$row['price']'>
+                    <input type='hidden' name='quantity' value='$row['quantity']'>
+                    <button type='submit' name='add-to-cart'>Add to Cart</button>
+                  </div></a>";
+                  }
+                }
+                */
+              ?>
+
+--->
