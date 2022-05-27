@@ -60,8 +60,15 @@ print("Total searched images = ", len(results))
 #true positive, false positive
 tp=0
 fp=0
+
 #query image description
 inDesc= imageAnnotate.get(args["query"])
+
+#number of top images displayed
+top=10
+
+#counter
+cnt=1
 
 for (d, h) in results:
 	resultPaths = hashes.get(h, [])
@@ -69,12 +76,23 @@ for (d, h) in results:
 	#resultsPaths.append(resultPaths)
 
 	for resultPath in resultPaths:
+		if cnt<= top:
+			result = cv2.imread(resultPath)
+			cv2.imshow("top "+str(cnt), result)
+			key=cv2.waitKey(0)
+			cnt+=1
 		resultPath=resultPath[8:]
 		resDesc= imageAnnotate.get(resultPath)
 		if inDesc[0] == resDesc[0] or inDesc[1] == resDesc[1] or inDesc[2] == resDesc[2]:
 			tp += 1
 		else:
 			fp +=1
+
+		
+
+
+
+
 print ("TP = ", tp , "\nFP = ", fp)
 print("Accuracy = ", tp , "/(",tp,"+",fp,") = ", tp/(tp+fp),"\n\n\n" )
 
