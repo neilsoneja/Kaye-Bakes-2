@@ -44,14 +44,51 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-primary">Order Summary</span>
                             <span class="badge bg-primary rounded-pill">1</span>
-                        </h4>
-                        <?php
-        echo var_dump('cart-2');
+                            <?php
+          $total = 0;
+          $cart_items = array('');
+          $output = "";
+          $output .= "
+          <table class='table table-bordered table-stripped'>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    ";
+
+        if (!empty($_SESSION['cart'])) {
+          foreach ($_SESSION['cart'] as $key => $value) {
+              $output .= "
+                  <tr>
+                      <td>
+                        <img src='product_images/".$value['image_url']."' style='height: 100px'>
+                      </td>
+                      <td>".$value['product_name']."</td>
+                      <td>".$value['quantity']."</td>
+                      <td>Php  ".number_format($value['price'] * $value['quantity'])."</td>
+                  </tr>
+              ";
+              $total = $total + $value['quantity'] * $value['price'];
+              $all_cart_items = $value['product_id'];
+          }
+          $output .= "
+                        <tr>
+                          <td colspan='3'>Total Price</td>
+                          <td>".number_format($total)."</td>
+                        </tr>
+                        </table>
+                        ";
+        }
+        echo $output
         ?>
+                        </h4>
                     </div>
                 </div>
 
                 <div>
+                <form method="POST" action="order-router-2">
                     <div class="col-md-7 col-lg-8">
                         <div class="form-container">
                             <h4 class="mb-3">Billing address</h4>
@@ -59,13 +96,14 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                 <div class="row g-3">
                                     <div class="col-sm-12">
                                         <label for="firstName" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                        <input type="text" class="form-control" placeholder="" value="full name"
                                             required>
                                         <div class="invalid-feedback">
                                             Valid first name is required.
                                         </div>
                                     </div>
 
+                                  <!--
                                     <div class="col-12">
                                         <label for="username" class="form-label">Username</label>
                                         <div class="input-group has-validation">
@@ -77,12 +115,13 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                             </div>
                                         </div>
                                     </div>
+                                  --->
 
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email <span
                                                 class="text-muted"></span></label>
                                         <input type="email" class="form-control" id="email"
-                                            placeholder="you@example.com">
+                                            placeholder="you@example.com" value="email">
                                         <div class="invalid-feedback">
                                             Please enter a valid email address for shipping updates.
                                         </div>
@@ -91,7 +130,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                     <div class="col-12">
                                         <label for="address" class="form-label">Address</label>
                                         <input type="text" class="form-control" id="address" placeholder="1234 Main St"
-                                            required>
+                                            required value="address">
                                         <div class="invalid-feedback">
                                             Please enter your shipping address.
                                         </div>
@@ -101,7 +140,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                         <label for="address2" class="form-label">Contact Info. <span
                                                 class="text-muted"></span></label>
                                         <input type="text" class="form-control" id="address2"
-                                            placeholder="Cellphone or Telephone">
+                                            placeholder="Cellphone or Telephone" value="contact">
                                     </div>
 
                                     <div class="col-md-5">
@@ -155,12 +194,6 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                     <input type="checkbox" class="form-check-input" id="same-address">
                                     <label class="form-check-label" for="same-address">Shipping address is the same as
                                         my billing address</label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="save-info">
-                                    <label class="form-check-label" for="save-info">Save this information for next
-                                        time</label>
                                 </div>
 
                                 <hr class="my-4">
@@ -223,7 +256,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
                                 <hr class="my-4">
 
-                                <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                                <button class="w-100 btn btn-primary btn-lg" type="submit" name="check-out">Continue to checkout</button>
                             </form>
                         </div>
                     </div>

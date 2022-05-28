@@ -230,10 +230,10 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
                             <div class="check-out">
                                 <form method="post"
-                                    action="routers/order-router-2.php?product_id=<?=$value['product_id']?>">
-                                    <input type="hidden" name="product_name" value="<?= $value['product_name']?>">
-                                    <input type="hidden" name="product_desc" value="<?= $value['product_desc']?>">
-                                    <input type="hidden" name="total-price" value="<?= $value ?>">
+                                    action="routers/order-router-2.php?product_id=<?=$value['product_id'];?>">
+                                    <input type="hidden" name="product_name" value="<? $value['product_name'];?>">
+                                    <input type="hidden" name="product_desc" value="<? $value['product_desc'];?>">
+                                    <input type="hidden" name="total-price" value="<? $total; ?>">
                                     <input type="submit" name="check-out" value="Proceed to checkout">
                                 </form>
                             </div>
