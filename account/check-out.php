@@ -44,6 +44,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-primary">Order Summary</span>
                             <span class="badge bg-primary rounded-pill">1</span>
+                            <form method="POST" action="order-router-2">
                             <?php
           $total = 0;
           $cart_items = array('');
@@ -88,7 +89,6 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                 </div>
 
                 <div>
-                <form method="POST" action="order-router-2">
                     <div class="col-md-7 col-lg-8">
                         <div class="form-container">
                             <h4 class="mb-3">Billing address</h4>
