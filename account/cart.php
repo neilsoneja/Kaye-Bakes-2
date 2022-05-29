@@ -16,6 +16,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
     <meta name="generator" content="Hugo 0.98.0">
     <title>Dashboard Template · Bootstrap v5.2</title>
 
+    <script src="https://kit.fontawesome.com/0f30674e5a.js" crossorigin="anonymous"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -158,76 +159,84 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h1 class="h2">My Cart</h1>
                 </div>
                 <div class="main_content">
                     <div class="row">
-                        <div class="header">Cart</div>
                         <div class="text-center">
                             <?php
                 $total = 0;
                 $cart_items = array('');
                 $output = "";
-                $output .= "
-                    <table class='table table-bordered table-stripped'>
-                        <tr>
-                            <th>ID</th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total Price</th>
-                            <th>Dedications</th>
-                            <th>Action</th>
-                        </tr>
-                    ";
 
                     if (!empty($_SESSION['cart'])) {
                         foreach ($_SESSION['cart'] as $key => $value) {
                             $output .= "
-                                <tr>
-                                    <td>".$value['product_id']."</td>
-                                    <td>
-                                      <img src='product_images/".$value['image_url']."' style='height: 250px'>
-                                    </td>
-                                    <td>".$value['product_name']."</td>
-                                    <td>".$value['product_desc']."</td>
-                                    <td>".$value['price']."</td>
-                                    <td>".$value['quantity']."</td>
-                                    <td>Php  ".number_format($value['price'] * $value['quantity'])."</td>
-                                    <td><input type='text' name='dedications' value=''></td>
-                                    <td>
-                                        <a href='cart.php?action=remove&product_id=".$value['product_id']."'>
-                                            <button>Remove</button>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <div class='cart-container'>
+                                <div class='row'>
+                                    <div class='col-md-8'>
+                                        <div class='inner-cart-container'>
+                                            <div class='row'>
+
+                                                <div class='col-sm-3'>
+                                                <img src='product_images/".$value['image_url']."' style='height: 300px'>
+                                                </div>
+
+                                                <div class='col-sm-8'>
+                                                    <h3>".$value['product_name']."</h3>
+                                                    <p>".$value['product_desc']."</p>
+                                                </div>
+
+                                                <div class='col-sm-1'>
+                                                <a href='cart.php?action=remove&product_id=".$value['product_id']."'>
+                                                <button class='fa-solid fa-x'></button>
+                                                </a>
+                                                </div>
+
+                                            </div>
+                                            <input type='text' name='dedications' value='' style='width: 80%'>
+                                        </div>
+                                    </div>
+
+                                    <div class='col-sm-1'>
+                                    </div>
+
+                                    <div class='col-sm-3'>
+                                        <div class='row'>
+                                        <div class='col-sm-6'>
+                                            <p>Quantity</p>
+                                            <p>".$value['quantity']."   Pc</p>
+                                        </div>
+                                        <div class='col-sm-6'>
+                                            <p>Price</p>
+                                            <p>Php  ".number_format($value['price'] * $value['quantity'])."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
                             ";
                             $total = $total + $value['quantity'] * $value['price'];
-                            $all_cart_items = $value['product_id'];
                         }
 
                         $output .= "
-                        <tr>
-                          <td colspan='3'></td>
-                          <td></b>Total Price</b></td>
-                          <td>".number_format($total)."</td>
-                          <td>".$all_cart_items."</td>
-                          <td>
+                            <div class='total-price'>
+                            <p>Total Price<p>   
+                            <p>".number_format($total)."<p>
                             <a href='from_menu.php?action=clear_all'>
                             <button>Clear All</button>
-                            <td>
-                            </td>
                             </a>
-                          </td>
-                        </tr>
+                            </div>
                         ";
                     }
 
                   echo $output
                   ?>
-
+                  
+                  <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                </div>
                             <div class="check-out">
                                 <form method="post"
                                     action="routers/order-router-2.php?product_id=<?=$value['product_id'];?>">
@@ -237,6 +246,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                     <input type="submit" name="check-out" value="Proceed to checkout">
                                 </form>
                             </div>
+                            
                             <?php
 
                   ?>

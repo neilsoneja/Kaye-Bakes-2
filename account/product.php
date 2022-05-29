@@ -205,7 +205,12 @@ if(isset($_POST["add_to_cart"]))
                                 <div class='product-box'>
                                     <form method="post"
                                         action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
-                                        <img src="product_images/<?=$row['image_url']?>" style='height: 250px'>
+                                        <div class='row'>
+                                        <div class="col-sm-6">
+                                        <img src="product_images/<?=$row['image_url']?>" style='height: 350px'>
+                                        </div>
+
+                                        <div class="col-sm-6">
                                         <h3><?=$row['product_name'];?></h3>
                                         <p><?=$row['product_desc'];?></p>
                                         <p>Php <?=number_format($row['price']);?></p>
@@ -216,6 +221,8 @@ if(isset($_POST["add_to_cart"]))
                                         <input type="hidden" name="price" value="<?= $row['price']?>">
                                         <input type="number" name="quantity" value="1" hidden>
                                         <input type="submit" name="add-to-cart" value="Add To Cart">
+                                        </div>
+                                        </div>
                                     </form>
                                 </div>
                                 <?php }
