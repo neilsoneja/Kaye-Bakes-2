@@ -15,6 +15,7 @@ import argparse
 import cv2
 import csv
 
+
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--index", type=str, default="index.csv")
 ap.add_argument("-u", "--upload", required = True)
@@ -50,10 +51,18 @@ fp=0
 inDesc= imageAnnotate.get(args["upload"])
 
 #number of top images displayed
-top=10
+top=25
 
 #counter
 cnt=1
+
+
+for (d) in results:
+	print(" {} total image(s) with d: {}".format(
+		len(resultPaths), d))
+
+	#print(" {} total image(s) with d: {}, h: {}".format(len(resultPaths), d, h))		
+	#resultsPaths.append(resultPaths)
 
 locs = []
 similars = []
