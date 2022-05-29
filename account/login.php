@@ -145,3 +145,34 @@ else{
               ?>
 
 --->
+
+<?php
+                $sql = "SELECT * FROM products WHERE customized = 0";
+                $result = mysqli_query($conn, $sql);
+                $query_results = mysqli_fetch_array($result);
+    
+                if ($query_results > 0) {
+                  while ($row = mysqli_fetch_assoc($result)) {?>
+
+                    <?php
+                    echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'>"
+                    ?>
+
+                    <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
+                    <img src="product_images/<?=$row['image_url']?>" style='height: 250px'>
+                    <p><?=$row['product_name'];?></p>
+                    <p hidden><?=$row['product_desc'];?></p>
+                    <p>Php  <?=number_format($row['price']);?></p>
+
+                    <input type="hidden" name="image_url" value="<?= $row['image_url']?>">
+                    <input type="hidden" name="product_name" value="<?= $row['product_name']?>">
+                    <input type="hidden" name="product_desc" value="<?= $row['product_desc']?>">
+                    <input type="hidden" name="price" value="<?= $row['price']?>">
+                    <input type="number" name="quantity" value="1" hidden>
+                    <input type="submit" name="add-to-cart" value="Add To Cart">
+                    </form>
+                    <?php }
+                }
+                
+
+              ?>
