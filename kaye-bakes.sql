@@ -168,7 +168,7 @@ COMMIT;
 
 -- ------------------------------------------------------------------------------------------
 --
--- Dumping data for table `products`
+-- Menu Products
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_desc`, `price`, `Customized`, `image_url`, `cake_type`, `cake_flavor`, `icing_flavor`, `deleted`) VALUES
@@ -192,11 +192,51 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_desc`, `price`, `
 (44, 'Smores Bars', '15 Smore bars made with thick, tasty crust, premium chocolate, toasted mallows and Hershey chocolate on top.', 265, 0, 'Smores.jpg', NULL, NULL, NULL, 0);
 
 --
--- Indexes for dumped tables
+-- Menu Products
 --
+-- ------------------------------------------------------------------------------------------
+--
+-- Custom Products
+--
+
+INSERT INTO `products`(`product_name`, `product_desc`, `price`, `Customized`, `image_url`, `cake_type`, `cake_flavor`, `icing_flavor`, `deleted`, `cake_size`) 
+
+VALUES 
+('Octonauts-themed Cake','From the famous television series, "Octonauts" that started in 2010, we are inspired to showcase Captain Barnacles and his team mates','800','1','202417718_325487462540206_3769384308967751756_n.jpg','cake','chocolate','0','fondant','6inches'),
+('Overloaded Oreo Cake','3 layers of Oreo Chiffon Cake covered with Oreo Buttercream icing, drizzled with melted chocolate and topped with Oreos.','1150','1','190467260_306534187768867_5484906304633274511_n.jpg','cake','chocolate','buttercream','0','9inches'),
+('Carrot Cake','A chunky Flavorful cake made with fresh carrots and real walnuts frosted with cream cheese icing.','1050','1','272083068_463967432025541_5798129019754268316_n.jpg','cake','carrot','cream_cheese','0','9inches'),
+('Chocolate Cake','Chocolate Cake covered with Buttercream Icing','375','1','271628654_459609585794659_3906463957166714636_n.jpg','cake','chocolate','buttercream','0','4inches'),
+(' Chocolate Cake','Chocolate Cake covered with Buttercream Icing','490','1','260287185_430790272009924_1192468824419506728_n.jpg','cake','chocolate','buttercream','0','6inches'),
+('Red Velvet Cake','Behind this buttercream icing, hides our moist and flavorful red velvet signature cake.','650','1','244178594_395318258890459_2987269854333336011_n.jpg','cake','red_velvet','buttercream','0','6inches'),
+('Money Cake','Made with mango chiffon, then filled with fresh mangoes and vegan whipped cream.','850','1','242936400_390876266001325_1363715095845968859_n.jpg','cake','mango_chiffon','merengue','0','6inches'),
+('Red Velvet Cake','Behind this buttercream icing, hides our moist and flavorful red velvet signature cake.','1050','1','242373253_388745472881071_7295517219885017801_n.jpg','cake','red_velvet','buttercream','0','9inches'),
+(' Sansrival Cake','This is layers of cashew wafer and french buttercream stacked perfectly for a satisfying indulgence.','1350','1','120493751_167107881711499_2655423482051305365_n.jpg','cake','sans_rival','buttercream','0','9inches'),
+('Chocolate Money Cake',"If you desire for a money cake, then we're here to make it as far as we can, with this Chocolate Cake topped with Buttercream Icing.",'750','1','225771459_351762159912736_6439062695661552583_n.jpg','cake','chocolate','buttercream','0','6inches'),
+('Red Velvet Money Cake',"Because of our gratitude to them everyday, it will never be too late to feature this wonderful red velvet money cake with buttercream icing for Mother's day",'1350','1','213335771_336573321431620_8076832528081215742_n.jpg','cake','red_velvet','buttercream','0','6inches'),
+('Mocha Chiffon Fondant Cake','Send love and hugs to our doctors, nurses and our frontliners through our original and freshly baked Mocha Chiffon with Fondant Cake','950','1','173935308_283294686759484_7592430548018566313_n.jpg','cake','mocha_chiffon','fondant','0','6inch'),
+('Vanilla Chiffon','Vanilla Chiffon with Buttercream Frosting','650','1','164576745_272088754546744_7819501716608156782_n.jpg','cake','vanila_chiffon','buttercream','0','6inches'),
+('Red Velvet Cake','Red Velvet Cake with Cream Cheese Frosting','1050','1','164742965_269373644818255_2170657300178414259_n.jpg','cake','red_velvet','cream_cheese','0','9inches'),
+('Chocolate Money Cake',"If you desire for a money cake, then we're here to make it as far as we can, with this Chocolate Cake topped with Buttercream Icing.",'1100','1','243517490_394065989015686_4040078969147043719_n.jpg','cake','chocolate','buttercream','0','9inches'),
+('Totoro X Strawberry Cake','Layers of Vanilla Chiffon filled with strawberry flavored buttercream, beautifully topped with fresh strawberries.','1200','1','196054456_317206083368344_559117140705000238_n.jpg','cake','strawberry','buttercream','0','9inches'),
+('Choco Buttercream','Chocolate cake with buttercream frosting','490','1','167910179_276653607423592_3783542180133165779_n.jpg','cake','chocolate','buttercream','0','6inches'),
+('Red velvet money cake',"if you desire for a money cake, then we're here to make it as far as we can with our Red velvet money cake with Cream cheese frosting.",'1450','1','193987349_314505813638371_3286078867865827075_n.jpg','cake','red_velvet','buttercream','0','9inches'),
+('Strawberry Shortcake with Flowers','Layers of Vanilla Chiffon filled with strawberry flavored buttercream, beautifully topped with fresh strawberries and florals.','1200','1','173380409_283938260028460_8385848213773839715_n.jpg','cake','strawberry','buttercream','0','9inches'),
+('Chocolate Money Cake',"If you desire for a money cake, then we're here to make it as far as we can, with this Chocolate Cake topped with Buttercream frosting.",'1100','1','160402946_261447985610821_7715676171921234966_n.jpg','cake','chocolate','buttercream','0','9inches'),
+('Carrot Cake','Designed as one of our healthiest desserts, our carrot cake features moist, balance and flavor','1050','1','150102913_246723707083249_8020259760178085492_n.jpg','cake','carrot','cream_cheese','0','9inch'),
+('Chocolate cake with Blue Velvet Crinkles','Craving to add a customized cake with our crinkles? here is a Chocolate cake with Buttercream frosting with Blue Velvet Crinkles','1200','1','199941638_322939712794981_1450613446828329090_n.jpg','cake','chocolate','buttercream','0','6inches'),
+('Red Velvet Cake','Designed with love, this sunflower cake is beyond heartbeats with its red velvet flavor covered with buttercream frosting.','1050','1','133204548_214499756972311_1153710032686718458_n.jpg','cake','red_velvet','cream_cheese','0','9inches'),
+('Choco Buttercream Cake','Snow ice-themed cake with a chocolate base and buttercream icing.','490','1','128349408_192418462513774_6598218976123063567_n.jpg','cake','chocolate','buttercream','0','6inches'),
+('Choco Buttercream Heart-shaped Cake',"It's a Choco Buttercream Heart-shaped Cake drizzled with blue-colored white Chocolate",'450','1','122208214_174226874332933_6200804887330506532_n.jpg','cake','chocolate','buttercream','0','4inches'),
+('Carrot Cake with Fresh Fruits','A chunky Flavorful cake made with fresh carrots, topped with fresh tropical fruits','850','1','188965631_309742320781387_2686826666501265164_n.jpg','cake','carrot','cream_cheese','0','9inch'),
+('Chocolate heart-shaped cake','Heart-shaped cake with a Chocolate base and Buttercream frosting','376','1','178457719_291881782567441_129465566001969973_n.jpg','cake','chocolate','buttercream','0','4inches'),
+('Semi fondant chocolate cake','A 4-inch chocolate cake with a buttercream frosting and fondant at the base','450','1','177470358_291881142567505_8526036144150620132_n.jpg','cake','chocolate','buttercream','0','4inches'),
+('Choco Buttercream','Chocolate cake with buttercream frosting','490','1','180593871_295870385501914_7495208871144748451_n.jpg','cake','chocolate','buttercream','0','6inches');
+
+--
+-- Custom Products
+--
+-- ------------------------------------------------------------------------------------------
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
