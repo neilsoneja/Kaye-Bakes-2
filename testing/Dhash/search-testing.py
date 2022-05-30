@@ -65,13 +65,15 @@ fp=0
 inDesc= imageAnnotate.get(args["query"])
 
 #number of top images displayed
-top=10
-
+top=30
 #counter
 cnt=1
 
 for (d, h) in results:
 	resultPaths = hashes.get(h, [])
+	print(" {} total image(s) with d: {}, h: {}".format(
+		len(resultPaths), d, h))
+
 	#print(" {} total image(s) with d: {}, h: {}".format(len(resultPaths), d, h))		
 	#resultsPaths.append(resultPaths)
 

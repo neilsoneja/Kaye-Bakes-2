@@ -16,13 +16,13 @@ class Searcher:
 			reader = csv.reader(f)
 			i = 0
 			for row in reader:
-				d = 20.0
+				d = 30.0
 				try:
 					features = [float(x) for x in row[1:]]
 					d = self.chi2_distance(features, queryFeatures)
 				except:
 					pass
-				if d < 20.0:
+				if d < 10.0:
 					results[row[0]] = d
 				if d < 1.0:
 					break
