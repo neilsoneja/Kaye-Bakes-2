@@ -217,7 +217,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
           }
 
           $output .= "
-          <tr>
+          <tr class='total price'>
             <td colspan='2'>Total Price</td>
             <td>".number_format($total)."</td>
           </tr>
