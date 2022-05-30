@@ -1,6 +1,11 @@
 <?php
 session_start();
-$_SESSION['upload-message']
+
+if (empty($_SESSION['upload-message'])){
+  $_SESSION['cake_type']= $_POST['cake_type'];
+}
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -92,7 +97,7 @@ $_SESSION['upload-message']
         <div class="container col-md-6">
             <div class="mb-5">
                 <label for="Image" class="form-label">Upload Image for Inspiration</label>
-                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" onchange="preview()">
+                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" onchange="preview()" required>
                 
             </div>
             <img id="frame" src="" class="img-fluid" />

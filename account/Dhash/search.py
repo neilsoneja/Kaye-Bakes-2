@@ -54,7 +54,9 @@ try:
 			
 		#resultsPaths.append(resultPaths)
 		for resultPath in resultPaths:
-			resultPath=resultPath[7:]
+			resultSplit=resultPath.split("@")
+			resultPath=resultSplit[1]
+			resultPath=resultPath[1:]
 			print (resultPath)
 
 	

@@ -51,15 +51,25 @@ if ($uploadOk == 1) {
 
     //renaming
     $temp = explode(".", $_FILES["fileToUpload"]["name"]);
-    $newfilename = "query" . '.' . end($temp);
+
+    if (isset($_SESSION['uploadNumber'])){
+      
+      $_SESSION['uploadNumber']+=1;
+    }
+    else {
+      $_SESSION['uploadNumber']=1;
+    }
+    /*$newfilename= random_bytes(20);
+    $newfilename = $newfilename . '.' . end($temp);*/
+    $newfilename = strval($_SESSION['uploadNumber']) . '.' . end($temp);
   
     //setting name as session var for search  
     $_SESSION['query-filename'] = $newfilename;
   
   
-    //clearing upload folder
+    /*/clearing upload folder
     array_map('unlink', array_filter(
-      (array) array_merge(glob("uploads/*"))));
+      (array) array_merge(glob("uploads/*"))));*/
   
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/".$newfilename)) {    
       //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded."; 

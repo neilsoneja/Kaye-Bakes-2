@@ -1,10 +1,16 @@
 <?php
 session_start();
-//retrieving query imagae filename 
+//retrieving query imagae filename and cake type
 $queryName = $_SESSION['query-filename'];
+$cake_type=$_SESSION['cake_type'];
 
 //resseting output array
 $output=array();
+
+//executing python Dhash search indexing
+
+exec( "python index_images.py --images images/new/".$cake_type."@");
+
 
 //executing python Dhash search algo
 exec( "python search.py --q uploads/".$queryName, $output);
@@ -13,12 +19,16 @@ exec( "python search.py --q uploads/".$queryName, $output);
 $paths = array();
   foreach ($output as $filename){
       //path to images dir
-      $path="/Kaye-Bakes-2/account/Dhash/images/".$filename;
-      $paths[]=$path; 
+
+      $path="/Kaye-Bakes-2/account/Dhash/images/new/".$cake_type."@/".$filename;
+      $paths[$filename]=$path; 
   }
 
 //path to inquiry image
 $queryPath="/Kaye-Bakes-2/account/Dhash/uploads/".$queryName;
+$_SESSION['queryname']=$queryName;
+$_SESSION['queryPath']=$queryPath;
+
 
 ?>
 <!doctype html>
@@ -26,7 +36,6 @@ $queryPath="/Kaye-Bakes-2/account/Dhash/uploads/".$queryName;
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <title>customize</title>
 
     <link rel="stylesheet" type="text/css"  media="screen,projection" href="/Kaye-Bakes-2/account/css/new.css">
@@ -90,18 +99,16 @@ $queryPath="/Kaye-Bakes-2/account/Dhash/uploads/".$queryName;
   </head>
   <body>
     
+
+
 <header>
+  <div class="navbar navbar-dark ground-dark shadow-sm">
+    <div class="container">
+      <a href="/Kaye-Bakes-2/index.html" class="navbar-brand d-flex align-items-center"><img src="/Kaye-Bakes-2/account/images/materialize-logo.png" alt="logo"></a> <span class="logo-text"></span>
 
-<header>
-
-
-<div class="navbar navbar-dark ground-dark shadow-sm">
-  <div class="container">
-    <a href="/Kaye-Bakes-2/index.html" class="navbar-brand d-flex align-items-center"><img src="/Kaye-Bakes-2/account/images/materialize-logo.png" alt="logo"></a> <span class="logo-text"></span>
-
-    </button>
+      </button>
+    </div>
   </div>
-</div>
 </header>
 
 
@@ -131,33 +138,35 @@ $queryPath="/Kaye-Bakes-2/account/Dhash/uploads/".$queryName;
 
         
         <?php
-        for ($x = 0; $x <= 8; $x++)
+        foreach ($paths as $name => $url)
         {
         ?>
         <div class="col">
+          <form method="post" action="customization.php">
           <div class="card shadow-sm">
-            <img class="img-thumbnail card-img-top"  src="<?php echo $paths[$x]; ?>"  alt="uploaded image"/>
+            <img class="img-thumbnail card-img-top"  src="<?php echo $url; ?>"  alt="uploaded image"/>
+            <input id="baseName" name="baseName" value="<?php echo $name; ?>" hidden>
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">Name with description</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">Customize</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
+        </form>
         </div>
         
         <?php
       }
       ?>
-
+   
       </div>
     </div>
   </div>
-</div>
+
 
 </main>
 

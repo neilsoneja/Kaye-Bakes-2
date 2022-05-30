@@ -31,3 +31,25 @@
 .newbtn {
     background-color: #bbb079;
  }
+
+ .bgbrown {
+    background: #31241b;
+}
+
+.bg-lt-brown {
+    background: #423326;
+}
+
+.nav-link {
+    font-size: 20px;
+    color: #cbc289;
+}
+
+.nav-item>a:hover {
+    color: #c6b485;
+}
+
+.navbar-nav>.active>a {
+    background-color: #c6c185;
+    color: #E7DA9A;
+}

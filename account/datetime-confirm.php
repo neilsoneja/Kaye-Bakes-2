@@ -153,7 +153,7 @@ if ($monthinput == $month && $days < 2)
         if($order === "menu"){
           echo '<a href="from_menu.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed</a>' ;} 
         else{
-          echo '<a href="customize-order-new.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed</a>';}    
+          echo '<a href="/Kaye-Bakes-2/account/Dhash/cake-type.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed</a>';}    
       ?>
        </div>
     </div>
@@ -190,7 +190,7 @@ else{
       exit();
     }
   else{
-      header("Location: /Kaye-Bakes-2/account/customize-order-new.php"); 
+      header("Location: /Kaye-Bakes-2/account/Dhash/cake-type.php"); 
       exit();
   }
 }

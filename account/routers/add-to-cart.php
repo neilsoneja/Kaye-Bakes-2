@@ -24,7 +24,7 @@ if (isset($_POST['add-to-cart'])) {
                 "quantity" => $_POST['quantity']
             );
             $_SESSION['cart'][] = $session_array;
-
+            
         }
 
     } else {

@@ -1,6 +1,7 @@
 <?php  
 session_start(); 
-$_SESSION['upload-message']=""
+$_SESSION['upload-message']="";
+//$_SESSIOIN['cart']=array();
 ?>
 
 <!DOCTYPE html>
