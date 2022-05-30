@@ -21,7 +21,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.min.css">
+    <link rel="stylesheet" type="text/css" href="css/checkout.min.css">
 
 
     <!-- Custom styles for this template -->
@@ -38,18 +38,18 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                 <p class="lead"></p>
             </div>
 
-            <div class="order-summary">
-                <div class="row g-5">
-                    <div class="col-md-5 col-lg-4 order-md-last">
-                        <h4 class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="text-primary">Order Summary</span>
-                            <span class="badge bg-primary rounded-pill">1</span>
-                            <form method="POST" action="order-router-2">
-                            <?php
+            <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Your cart</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <?php
           $total = 0;
           $cart_items = array('');
           $output = "";
           $output .= "
+          <div class=row-md-4>
           <table class='table table-bordered table-stripped'>
                         <tr>
                             <th>Image</th>
@@ -80,15 +80,13 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                           <td>".number_format($total)."</td>
                         </tr>
                         </table>
+                        </div>
                         ";
+                        
         }
         echo $output
         ?>
-                        </h4>
-                    </div>
-                </div>
-
-                <div>
+        </div>
                     <div class="col-md-7 col-lg-8">
                         <div class="form-container">
                             <h4 class="mb-3">Billing address</h4>

@@ -149,34 +149,46 @@ nav {
 
 /*----------Cart----------*/
 
-.main_content .cart-container .col-md-8{
-  border: 3px solid #274e13;
+table {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.main_content .cart-container .products{
   background-color: #31241b;
-  border-top-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  box-shadow: 0px 5px 5px 5px  #25190d;;
+  border: solid 3px #274e13;
   padding: 20px 20px;
   text-align: center;
   margin-bottom: 50px;
 }
 
-.main_content .cart-container .col-md-8 input{
+.main_content .cart-container .price{
+  background-color: #31241b;
+  border: solid 3px #274e13;
+  padding: 20px 20px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.main_content .cart-container input{
   margin-top: 20px;
 }
 
 .main_content .cart-container img{
+  margin-top: 20px;
+  margin-left: 20px;
   border: 3px solid #cbc289;
   border-radius: 10px;
   background-color: #25190d;
 }
 
-.main_content .cart-container .inner-cart-container p{
+.main_content table p{
   margin: 25px;
   font-size: 15px;
   color: #cbc289;
 }
 
-.main_content .cart-container .inner-cart-container h3{
+.main_content table h3{
   margin: 25px;
   font-size: 30px;
   color: #cbc289;
