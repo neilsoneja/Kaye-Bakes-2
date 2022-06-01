@@ -17,6 +17,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/bootstrap/form-validation.css">
     <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/list-groups.css">
     <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/loader.css">
     
  
 
@@ -77,7 +78,13 @@ session_start();
 
 
   <body class="bg-light">
-    
+    <!--Loader-->
+      <div class="loader" id="loading"> 
+        <div class="cssload-container" id="loading-image">
+          <div class="cssload-circle"></div>
+          <div class="cssload-circle"></div>
+        </div>
+      </div>
 
 
  
@@ -88,7 +95,7 @@ session_start();
     <form class="needs-validation" action="check-data.php" method="post" novalidate>
 
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+<!--      <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
       <h2>Checkout form</h2>
       <p class="lead">Details details</p>
     </div>
@@ -458,6 +465,10 @@ function hide2(){
 
 <!--custom-->
 <script type="text/javascript" src="js/own-script.js"></script>
-
+<script>
+$(window).on('load', function () {
+  $('#loading').fadeOut("slow");
+  }) 
+</script>
   </body>
 </html>

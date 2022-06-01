@@ -1,23 +1,26 @@
 <?php
 session_start();
 
-if (empty($_SESSION['upload-message'])){
-  $_SESSION['cake_type']= $_POST['cake_type'];
-}
+$dbservername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "kaye-bakes";
+$conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
+
 
 
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
     <title>customize</title>
 
-    <link rel="stylesheet" type="text/css"  media="screen,projection" href="css/new.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"  media="screen,projection" href="/Kaye-Bakes-2/account/css/new.css">
+    <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/loader.css">
 
     <style>
       .bd-placeholder-img {
@@ -73,47 +76,94 @@ if (empty($_SESSION['upload-message'])){
     </style>
 
     
-  </head>
-  <body>
-    
-<header>
+</head>
+<body>
 
-
-  <div class="navbar navbar-dark ground-dark shadow-sm">
-    <div class="container">
-      <a href="/Kaye-Bakes-2/index.html" class="navbar-brand d-flex align-items-center"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text"></span>
-
-      </button>
-    </div>
-  </div>
-</header>
-
-<main>
-<hr  >
-
-  <div class="container  text-center ">
-  <div class="p-5 mb-4 bg-light rounded-3">
-    <h4 class="display-4 pt-5">Upload Image for Inspiration</h4>
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <form action="Dhash/upload.php" method="post" enctype="multipart/form-data">
-        <div class="container col-md-6">
-            <div class="mb-5">
-     
-                <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" onchange="preview()" required>
-                
-            </div>
-            <img id="frame" src="" class="img-fluid" />
-            <p class="text-danger"><?php echo $_SESSION['upload-message']; ?></p>
-            <input  class="btn btn-secondary ground-dark my-2" type="submit" value="Upload Image" name="submit">
-            </div>
-          </form>
-          
+    <!--Loader-->
+    <div class="loader" id="loading"> 
+      <div class="cssload-container" id="loading-image">
+        <div class="cssload-circle"></div>
+        <div class="cssload-circle"></div>
       </div>
     </div>
 
+    <header>
+      <div class="navbar navbar-dark ground-dark shadow-sm">
+        <div class="container">
+          <a href="/Kaye-Bakes-2/index.html" class="navbar-brand d-flex align-items-center"><img src="/Kaye-Bakes-2/account/images/materialize-logo.png" alt="logo"></a> <span class="logo-text"></span>
+
+          </button>
+        </div>
+      </div>
+    </header>
+
+
+<main>
+
+  <section class="container py-5">
+      <div class="row">
+        <div class="col ">
+            <p class="display-3">Our Menu</p>
+        </div>
+      </div>
+  </section>
+  <hr class="my-4">
+
+   
+    <div class="album py-5 bg-light" >
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+<?php
+        $sql = "SELECT * FROM products WHERE customized = 0";
+        $result = mysqli_query($conn, $sql);
+        $query_results = mysqli_fetch_array($result);
+
+        if ($query_results > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+          $imageUrl = "product_images/".$row['image_url'];
+        
+        ?>
+        
+
+        <div class="col">
+          <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
+          <div class="card shadow-sm">
+            <img class="img-thumbnail card-img-top"  src="<?php echo $imageUrl; ?>"  alt="product image"/>
+            
+            <div class="card-body">
+              <p class="card-text"><?=$row['product_name'];?></p>
+
+              <p>Php <?=number_format($row['price']);?></p>
+
+
+              <div class="d-flex justify-content-between align-items-center">
+              <input type="hidden" name="image_url" value="<?php echo $imageUrl; ?>">
+              <input type="hidden" name="product_name" value="<?= $row['product_name']?>">
+              <input type="hidden" name="product_desc" value="<?= $row['product_desc']?>">
+              <input type="hidden" name="price" value="<?= $row['price']?>">
+              <input type="number" name="quantity" value="1" hidden>
+
+                <div class="btn-group">
+                  <button type="submit" name="add-to-cart" value="Add To Cart" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+        
+        <?php
+      }}
+      ?>
+   
+      </div>
+    </div>
   </div>
-  </div>
+
+
 </main>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -144,28 +194,37 @@ if (empty($_SESSION['upload-message'])){
         <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
       </ul>
     </footer>
-</div>
-  <!-- js -->
-    <!--bootstrap-->
-    <script type="text/javascript" src="js/bootstrap/bootstrap.bundle.min.js"></script>  
 
-    <!-- jQuery Library -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 
-    <!--bootstrap-->
-    <script type="text/javascript" src="js/bootstrap/bootstrap-datepicker.min.js"></script>
+<!--js-->
+  <!--bootstrap-->
+  <script type="text/javascript" src="/Kaye-Bakes-2/account/js/bootstrap/bootstrap.bundle.min.js"></script>  
 
-    <!--custom-->
-    <script type="text/javascript" src="js/own-script.js"></script>
+  <!-- jQuery Library -->
+  <script type="text/javascript" src="/Kaye-Bakes-2/account/js/jquery-3.4.1.min.js"></script>
 
-  <script>  
-    function preview() {
-        frame.src = URL.createObjectURL(event.target.files[0]);
-    }
-    function clearImage() {
-        document.getElementById('formFile').value = null;
-        frame.src = "";
-    }
-  </script>    
+  <!--bootstrap-->
+  <script type="text/javascript" src="/Kaye-Bakes-2/account/js/bootstrap/bootstrap-datepicker.min.js"></script>
+
+  <!--custom-->
+  <script type="text/javascript" src="/Kaye-Bakes-2/account/js/own-script.js"></script>
+
+  <!--loader-->
+  <script src="js/functions.js" type="text/javascript"></script>
+<script>  
+  function preview() {
+      frame.src = URL.createObjectURL(event.target.files[0]);
+  }
+  function clearImage() {
+      document.getElementById('formFile').value = null;
+      frame.src = "";
+  }
+
+
+  $(window).on('load', function () {
+    $('#loading').fadeOut("slow");
+  }) 
+</script>    
+
 </body>
 </html>

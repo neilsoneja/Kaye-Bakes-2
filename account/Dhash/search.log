@@ -1,26 +1,13 @@
 INFO:root:---------search start---------
 INFO:root: loading VP-Tree and hashes...
 INFO:root: performing search...
-INFO:root: search took 0.0009999275207519531 seconds
+INFO:root: search took 0.0 seconds
 INFO:root:---------search end---------
-INFO:root: 1 total image(s) with d: 22, h: 6.082423739733784e+18
-INFO:root: 1 total image(s) with d: 22, h: 8.748585571208726e+18
-INFO:root: 1 total image(s) with d: 24, h: 2.6894111252169585e+18
-INFO:root: 1 total image(s) with d: 26, h: 3257409355595279872
-INFO:root: 1 total image(s) with d: 26, h: 3.8880668452219484e+18
-INFO:root: 1 total image(s) with d: 26, h: 9.643829864531671e+18
-INFO:root: 1 total image(s) with d: 26, h: 1.805836813927522e+19
-INFO:root: 1 total image(s) with d: 27, h: 7.261713940102233e+18
-INFO:root: 1 total image(s) with d: 27, h: 1.309329589124338e+19
-INFO:root: 1 total image(s) with d: 27, h: 1.4767385007615142e+19
-INFO:root: 1 total image(s) with d: 27, h: 1.8057503992385085e+19
-INFO:root: 1 total image(s) with d: 28, h: 1.5554770648493937e+18
-INFO:root: 1 total image(s) with d: 28, h: 7.036147488878146e+18
-INFO:root: 1 total image(s) with d: 28, h: 1.0849492961648843e+19
-INFO:root: 1 total image(s) with d: 28, h: 1.3035307002886994e+19
-INFO:root: 1 total image(s) with d: 28, h: 1.5180518015724261e+19
-INFO:root: 1 total image(s) with d: 29, h: 3.092993839570791e+17
-INFO:root: 1 total image(s) with d: 29, h: 6.62364017345671e+18
-INFO:root: 1 total image(s) with d: 29, h: 7.436767644115815e+18
-INFO:root: 1 total image(s) with d: 29, h: 1.0562868757114644e+19
-INFO:root: 1 total image(s) with d: 29, h: 1.3069807962286647e+19
+INFO:root: 1 total image(s) with d: 18, h: 5.572435108999063e+18
+INFO:root: 1 total image(s) with d: 21, h: 1.3035307002886994e+19
+INFO:root: 1 total image(s) with d: 22, h: 1.1481035094631076e+19
+INFO:root: 1 total image(s) with d: 23, h: 3.7778579260748344e+18
+INFO:root: 1 total image(s) with d: 25, h: 6.171676875945392e+18
+INFO:root: 1 total image(s) with d: 25, h: 1.17038931960381e+19
+INFO:root: 1 total image(s) with d: 28, h: 5.567377487296892e+18
+INFO:root: 1 total image(s) with d: 29, h: 1.5554770648493937e+18

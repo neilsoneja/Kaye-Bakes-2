@@ -9,6 +9,15 @@
 .ground-dark {
     background-color: #312519 !important;
 }
+
+
+
+
+.shadow {
+    text-shadow: 2px 2px #312519;
+    }
+
+
 @font-face {
     font-family: 'Sailyme'; 
     src: url('/Kaye-Bakes-2/fonts/Sailyme.ttf'); 

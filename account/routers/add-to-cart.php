@@ -8,7 +8,7 @@ $dbPassword = "";
 $dbName = "kaye-bakes";
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
-if (isset($_POST['add-to-cart'])) {
+
 
     if (isset($_SESSION['cart'])) {
         
@@ -38,6 +38,6 @@ if (isset($_POST['add-to-cart'])) {
         );
         $_SESSION['cart'][] = $session_array;
     }
-}
-header("location: ../cart.php");
+
+header("location: ../cart-new.php");
 ?>

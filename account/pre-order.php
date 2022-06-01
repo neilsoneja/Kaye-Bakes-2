@@ -28,6 +28,9 @@ $_SESSION['upload-message']="";
     <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-datepicker.min.css"> 
     <link rel="stylesheet" href="css/bootstrap/signin.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/bootstrap/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+    <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/list-groups.css">
     
   <!-- CSS -->
   <style>
@@ -86,13 +89,14 @@ $_SESSION['upload-message']="";
 </head>
 
 <body class="text-center " >
-  <!-- Start Page Loading 
-  <div id="loader-wrapper">
-    <div id="loader"></div>        
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
+<!--Loader-->
+<div class="loader" id="loading"> 
+  <div class="cssload-container" id="loading-image">
+    <div class="cssload-circle"></div>
+    <div class="cssload-circle"></div>
+  </div>
 </div>
-   End Page Loading -->
+
 
   
   <main class="form-signin w-100 m-auto">
@@ -121,8 +125,17 @@ $_SESSION['upload-message']="";
             </div>
           </div>
           -->
+
+
+
+             
+        
+     
+
+
+
           <div class="form-floating mb-3">
-            <div name="date_delivery" class="input-group date" >
+            <div  class="input-group date" >
               
               <select name="order_type" id="order_type"  class="form-control" required>
                 <option value="" disabled selected hidden>Order Type</option>
@@ -176,13 +189,17 @@ $_SESSION['upload-message']="";
 
     <!-- jQuery Library -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  
 
   <!--bootstrap-->
   <script type="text/javascript" src="js/bootstrap/bootstrap-datepicker.min.js"></script>
  
    <!--custom-->
    <script type="text/javascript" src="js/own-script.js"></script>
-
+    
+   <!--loader-->
+    <script src="js/functions.js" type="text/javascript"></script>
+ 
     
     <script type="text/javascript">
         var date = new Date();
@@ -191,6 +208,11 @@ $_SESSION['upload-message']="";
         $('#datepicker').datepicker({ 
          startDate: date
         });
+
+        $(window).on('load', function () {
+          $('#loading').fadeOut("slow");
+          }) 
+
     </script>
   
 

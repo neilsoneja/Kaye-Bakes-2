@@ -124,40 +124,47 @@ if ($monthinput == $month && $days < 2)
 
 
 <body class="text-center ">
-  <!-- Start Page Loading 
-  <div id="loader-wrapper">
-      <div id="loader"></div>        
-      <div class="loader-section section-left"></div>
-      <div class="loader-section section-right"></div>
-  </div>
-   End Page Loading -->
 
-<main class="form-signin w-100 m-auto">
 
+<main class=" w-100 m-auto">
+<div class="container ">
+<div class=" row justify-content-center  py-4">
 <!--<img class="mb-4" src="/Kaye-Bakes-2/images/logo1.png" alt=""  height="57">-->
-<h1 class="bebas mb-3 ground-color col s12">Warning!</h1>
 
-<div id="login-page" class="row">
-  <div class="container col s12 z-depth-4 card-panel">
+
+<div id="login-page" class="col-md-6 bg-light rounded-3 shadow-sm pt-5 justify-content-center">
+  <h1 class="bebas mb-3  col s12 display-3">Notice!</h1>
+  <div class="container col s12 z-depth-4 card-panel  ">
 
     
       <div class="form-floating  mb-4">  
-          <h5 class="bebas center"><?php echo "Your order is set for ".$set.".<br>";?></h5>
-          <h6 class="bebas center">details details details</h6>
-      </div>
+        <div class="row">
+          <h5 class="bebas center ground-color"><?php echo "Your   order   is   set   for  ".$set.".<br>";?></h5>
+        </div>
+        <div class="row justify-content-center ">
+          <div class="col-md-8 text-">
+            <p class="justify ">Rush orders are subject to the availability of ingridients and materials. We recommend you contact us directly to inquire regarding your order before you proceed.</p>
+          </div>
+        </div>
+        </div>
 
 
-      <div class="form-floating mb-3 row">
-      <a href="http://neilsoneja/Kaye-Bakes-2" class="ground-dark w-50 btn btn-sm btn-secondary mb-3 ">Back to Homepage</a>
+      <div class="form-floating mb-3 row  px-5">
+     
+      <a href="http://neilsoneja/Kaye-Bakes-2" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Back to Homepage</a>
+       
       <?php
         if($order === "menu"){
-          echo '<a href="from_menu.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed</a>' ;} 
+          echo '<a href="from-menu-new.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed Anyway</a>' ;} 
         else{
-          echo '<a href="/Kaye-Bakes-2/account/Dhash/cake-type.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed</a>';}    
+          echo '<a href="/Kaye-Bakes-2/account/Dhash/cake-type.php" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Proceed Anyway</a>';}    
       ?>
-       </div>
+     
+      </div>
     </div>
   </div>
+</div>
+</div> 
 </main>
 
   <!-- ================================================
@@ -186,7 +193,7 @@ else{
 
   if ($order === "menu")
     {
-      header("Location: /Kaye-Bakes-2/account/from_menu.php"); 
+      header("Location: /Kaye-Bakes-2/account/from-menu-new.php"); 
       exit();
     }
   else{

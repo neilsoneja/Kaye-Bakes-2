@@ -180,6 +180,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                   while ($row = mysqli_fetch_assoc($result)) {?>
 
                             <?php
+                   
                     echo "<a href='product.php?title=".$row['product_name']."&image=".$row['image_url']."'>"
                     ?>
                             <div class='product-box'>
