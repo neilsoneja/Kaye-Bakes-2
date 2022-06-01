@@ -207,7 +207,7 @@ if(isset($_POST["add_to_cart"]))
                                         action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
                                         <div class='row'>
                                         <div class="col-sm-6">
-                                        <img src="product_images/<?=$row['image_url']?>" style='height: 350px'>
+                                        <img src="Dhash/images/new/menu@/<?=$row['image_url']?>" style='height: 350px'>
                                         </div>
 
                                         <div class="col-sm-6">

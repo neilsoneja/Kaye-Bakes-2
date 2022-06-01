@@ -181,7 +181,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                     <td style='width: 75%' class='products'>
                         <div class='row'>
                             <div class='col-sm-3'>
-                                <img src='product_images/".$value['image_url']."' style='height: 300px'>
+                                <img src='Dhash/images/new/menu@/".$value['image_url']."' style='height: 300px'>
                             </div>
 
                             <div class='col-sm-9'>

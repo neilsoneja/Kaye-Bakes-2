@@ -64,7 +64,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
               $output .= "
                   <tr>
                       <td>
-                        <img src='product_images/".$value['image_url']."' style='height: 100px'>
+                        <img src='Dhash/images/new/menu@/".$value['image_url']."' style='height: 100px'>
                       </td>
                       <td>".$value['product_name']."</td>
                       <td>".$value['quantity']."</td>
