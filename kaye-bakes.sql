@@ -30,6 +30,7 @@ SET time_zone = "+08:00";
 CREATE TABLE `products` (
   `product_id` int(15) NOT NULL,
   `product_name` varchar(20) NOT NULL,
+  `product_desc` varchar(300),
   `price` int(11) NOT NULL,
   `type` varchar(15) NOT NULL,
   `cake_type` varchar(20),
