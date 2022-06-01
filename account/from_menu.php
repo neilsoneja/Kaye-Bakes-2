@@ -184,7 +184,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                     ?>
                             <div class='product-box'>
                                 <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
-                                    <img src="product_images/<?=$row['image_url']?>" style='height: 250px'>
+                                    <img src="Dhash/images/new/menu@/<?=$row['image_url']?>" style='height: 250px'>
                                     <h3><?=$row['product_name'];?></h3>
                                     <p hidden><?=$row['product_desc'];?></p>
                                     <p>Php <?=number_format($row['price']);?></p>
