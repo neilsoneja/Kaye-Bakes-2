@@ -151,7 +151,7 @@ if ($monthinput == $month && $days < 2)
 
       <div class="form-floating mb-3 row  px-5">
      
-      <a href="http://neilsoneja/Kaye-Bakes-2" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Back to Homepage</a>
+      <a href="../index.html" class="ground-dark w-50 btn btn-sm btn-secondary mb-3">Back to Homepage</a>
        
       <?php
         if($order === "menu"){
