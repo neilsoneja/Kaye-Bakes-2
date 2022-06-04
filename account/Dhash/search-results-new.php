@@ -224,8 +224,6 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
   <!--custom-->
   <script type="text/javascript" src="/Kaye-Bakes-2/account/js/own-script.js"></script>
 
-  <!--loader-->
-  <script src="js/functions.js" type="text/javascript"></script>
 <script>  
   function preview() {
       frame.src = URL.createObjectURL(event.target.files[0]);
