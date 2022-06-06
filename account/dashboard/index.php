@@ -299,22 +299,7 @@ if (!isset($_SESSION['products'])){
                     </tr>
 
                     <input type="hidden" name="order_id" value="<?= $row['order_id']?>">
-                    <input type="hidden" name="lastName" value="<?= $query_name['lastName']?>">
-                    <input type="hidden" name="firstName" value="<?= $query_name['firstName']?>">
-                    <input type="hidden" name="customer_id" value="<?= $row['customer_id']?>">                    
-                    <input type="hidden" name="address_main" value="<?= $row['address_main']?>">
-                    <input type="hidden" name="address_specific" value="<?= $row['address_specific']?>">
-                    <input type="hidden" name="order_date" value="<?= $row['order_date']?>">
-                    <input type="hidden" name="payment" value="<?= $row['payment']?>">
-                    <input type="hidden" name="order_type" value="<?= $row['order_type']?>">
-                    <input type="hidden" name="date_delivery" value="<?= $row['date_delivery']?>">
-                    <input type="hidden" name="time_delivery" value="<?= $row['time_delivery']?>">
-                    <input type="hidden" name="delivery_options" value="<?= $row['delivery_options']?>">
-                    <input type="hidden" name="shipping_mode" value="<?= $row['shipping_mode']?>">
-                    <input type="hidden" name="shipping_fee" value="<?= $row['shipping_fee']?>">
-                    <input type="hidden" name="total" value="<?= $row['total']?>">
-                    <input type="hidden" name="dedications" value="<?= $row['dedications']?>">
-                    <input type="hidden" name="requests_details" value="<?= $row['requests_details']?>">
+
 
                   </form>
                 <?php

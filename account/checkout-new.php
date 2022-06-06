@@ -227,7 +227,8 @@ session_start();
               <label for="province" class="form-label">Province</label>
               <select class="form-select" id="province" name="province" required>
                 <option value="">Choose...</option>
-                <option value="United States">United States</option>
+                <option value="Cavite City">Metro Manila</option>
+                <option value="Cavite City">Cavite</option>
               </select>
               <div class="invalid-feedback">
                 Please select a valid Province.
@@ -238,7 +239,9 @@ session_start();
               <label for="city" class="form-label">City</label>
               <select class="form-select" id="city" name="city" required>
                 <option value="">Choose...</option>
-                <option value="California">California</option>
+                <option value="Cavite City">Cavite City</option>
+                <option value="Kawit">Kawit</option>
+                <option value="Rosario">Rosario</option>
               </select>
               <div class="invalid-feedback">
                 Please provide a valid City.

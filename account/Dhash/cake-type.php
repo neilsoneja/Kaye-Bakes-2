@@ -150,7 +150,7 @@ session_start();
           <input class="list-group-item-check pe-none"  name="cake_type" id="cake_type" value="cake">
           <label class="border-0 list-group-item rounded-3 py-3" for="cake">
             <button type="submit"  class="border-0 bg-transparent">
-            <img src="/Kaye-Bakes-2/account/Dhash/images/new/cake@/193968696_313841650371454_1723925180304910042_n.jpg" class="img-fluid rounded-4" alt="...">
+            <img src="/Kaye-Bakes-2/account/Dhash/images/new/cake@/242373253_388745472881071_7295517219885017801_n.jpg" class="img-fluid rounded-4" alt="...">
             <div class="sailyme centered">
              <h1 class="pt-1 text-center rounded-3 display-5 shadow  pt-5 text-light">  Cake </h1>
             </div>
@@ -222,7 +222,7 @@ session_start();
           <input class="list-group-item-check pe-none "  name="cake_type" id="cake_type" value="money" >
           <label class=" border-0 list-group-item rounded-3 py-3 " for="money">
             <button type="submit"  class="border-0 bg-transparent">
-            <img src="/Kaye-Bakes-2/account/Dhash/images/new/money@/226881664_351762209912731_8176926973059128737_n.jpg" class="img-fluid rounded-4" alt="...">
+            <img src="/Kaye-Bakes-2/account/Dhash/images/new/money@/2164576745_272088754546744_7819501716608156782_n.jpg" class="img-fluid rounded-4" alt="...">
 
             <div class="sailyme centered">
              <h1 class="pt-1 text-center rounded-3 display-5 shadow  pt-5 text-light">  Money Cake </h1>

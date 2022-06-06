@@ -22,7 +22,7 @@ try:
 		help="path to hashes dictionary")
 	ap.add_argument("-q", "--query",  type=str, required=True,  
 		help="path to input query image")
-	ap.add_argument("-d", "--distance", type=int, default=30,
+	ap.add_argument("-d", "--distance", type=int, default=35,
 		help="maximum hamming distance")
 	args = vars(ap.parse_args())
 

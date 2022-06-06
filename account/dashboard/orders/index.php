@@ -7,6 +7,9 @@ $dbName = "kaye-bakes";
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
 $order_id=$_POST['order_id'];
+
+
+
 $lastName=$_POST['lastName'];
 $firstName= $_POST['firstName'];
 $customer_id = $_POST['customer_id'];           
@@ -182,7 +185,7 @@ $requests_details = $_POST['requests_details'];
             <?php
               $sql = "SELECT * FROM cart WHERE order_id = ".strval($order_id)."";
               $cart = mysqli_query($conn, $sql);
-              $query_cart = mysqli_fetch_array($cart);
+              
 
 
 
