@@ -187,7 +187,7 @@ else{
     //echo"Shopping Cart Empty.";
 
 }
-$_SESSION['reference_code']= $reference_in."O".strval($order_id)."C".strval($customer_id);
+$_SESSION['reference_code']= $reference_in."O".strval($order_id);
 
 header("Location: exit.php"); 
 exit();

@@ -1,6 +1,6 @@
 ﻿Table Name,Column Name,Data Type,Key,Size,Null,Values,Decription,Data format
 products,product_id,int,PK,15,not null,,,
-products,product_name,product_name,,20,not null,,,
+products,product_name,varchar,,20,not null,,,
 products,product_desc,varchar,,300,,,,
 products,price,int,,11,not null,,,
 products,cake_type,varchar,,20,,cake; layered; dog; cat; money; wedding; bento; cupcakes; number_cup; number;,,

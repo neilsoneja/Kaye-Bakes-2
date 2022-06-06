@@ -1,18 +1,13 @@
 INFO:root:index imaging start
-INFO:root: processing image 1/14
-INFO:root: processing image 2/14
-INFO:root: processing image 3/14
-INFO:root: processing image 4/14
-INFO:root: processing image 5/14
-INFO:root: processing image 6/14
-INFO:root: processing image 7/14
-INFO:root: processing image 8/14
-INFO:root: processing image 9/14
-INFO:root: processing image 10/14
-INFO:root: processing image 11/14
-INFO:root: processing image 12/14
-INFO:root: processing image 13/14
-INFO:root: processing image 14/14
+INFO:root: processing image 1/9
+INFO:root: processing image 2/9
+INFO:root: processing image 3/9
+INFO:root: processing image 4/9
+INFO:root: processing image 5/9
+INFO:root: processing image 6/9
+INFO:root: processing image 7/9
+INFO:root: processing image 8/9
+INFO:root: processing image 9/9
 INFO:root: building VP-Tree...
 INFO:root:saving VP-Tree...
 INFO:root: serializing hashes...

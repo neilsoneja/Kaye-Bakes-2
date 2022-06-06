@@ -5,11 +5,127 @@ $dbUsername = "root";
 $dbPassword = "";
 $dbName = "kaye-bakes";
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
+
+
+//database initialization
+
+if (!isset($_SESSION['orders'])){
+  $sql = "SELECT * FROM orders WHERE order_status = 'pending'";
+  $orders = mysqli_query($conn, $sql);
+  $query_order = mysqli_fetch_array($orders);
+
+  while ($row = mysqli_fetch_assoc($orders)){
+    $order_array = array (
+      "order_id"=> $row['order_id'],
+      "customer_id" => $row['customer_id'],
+      "address_main" => $row['address_main'],
+      "address_specific" => $row['address_specific'],
+      "order_date" => $row['order_date'],
+      "payment" => $row['payment'],
+      "order_type" => $row['order_type'],
+      "date_delivery" => $row['date_delivery'],
+      "time_delivery" => $row['time_delivery'],
+      "delivery_options" => $row['delivery_options'],
+      "shipping_mode" => $row['shipping_mode'],
+      "shipping_fee" => $row['shipping_fee'],
+      "total" => $row['total'],
+      "dedications" => $row['dedications'],
+      "requests_details" => $row['requests_details'],
+      "order_status" => $row['order_status']
+    );
+
+    $_SESSION['orders'][$row['order_id']] = $order_array;
+  }
+}
+
+if (!isset($_SESSION['customers'])){
+  
+
+  foreach ($_SESSION['orders'] as $key => $value){
+  
+    $sql = "SELECT * FROM customers WHERE customer_id = ".$value['customer_id']."";
+    $customers = mysqli_query($conn, $sql);
+    
+    while ($row = mysqli_fetch_array($customers)){
+
+      $customer_array = array (
+        "customer_id" => $row['customer_id'],
+        "lastName" => $row['lastName'],
+        "firstName" => $row['firstName'],
+        "address_main" => $row['address_main'],
+        "address_specific" => $row['address_specific'],
+        "email" => $row['email'],
+        "mobile" => $row['mobile']
+      );
+     
+      $_SESSION['customers'][$row['customer_id']] = $customer_array;
+  }
+
+  }
+}
+
+
+if (!isset($_SESSION['dashcart'])){
+
+  foreach ($_SESSION['orders'] as $key=>$value){
+    $sql = "SELECT * FROM cart WHERE order_id = ".$value['order_id']."";
+    $dashcart = mysqli_query($conn, $sql);
+
+
+    while ($row = mysqli_fetch_assoc($dashcart)){
+      
+      $dashcart_array = array (
+        "item_id" => $row['item_id'],
+        "product_id" => $row['product_id'],
+        "order_id" => $row['order_id'],
+        "quantity" => $row['quantity'],
+        "price" => $row['price']
+      
+      );
+    
+      $_SESSION['dashcart'][$row['product_id']] = $dashcart_array;
+  }
+
+  }
+}
+
+
+if (!isset($_SESSION['products'])){
+
+  foreach ($_SESSION['dashcart'] as $key=>$value){
+
+    $sql = "SELECT * FROM products WHERE product_id = ".$value['product_id']."";
+    $products = mysqli_query($conn, $sql);
+
+
+    while ($row = mysqli_fetch_assoc($products)){
+      $products_array = array (
+        "product_id" => $row['product_id'],
+        "product_name" => $row['product_name'],
+        "product_desc" => $row['product_desc'],
+        "price" => $row['price'],
+        "cake_type" => $row['cake_type'],
+        "cake_size" => $row['cake_size'],
+        "cake_flavor" => $row['cake_flavor'],
+        "icing_flavor" => $row['icing_flavor'],
+        "customized" => $row['customized'],
+        "image_url" => $row['image_url']
+      );
+    
+      $_SESSION['products'][$row['product_id']] = $products_array;
+  }
+
+  }
+}
+
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>customize</title>
@@ -83,8 +199,8 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!--<input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-    -->
+  <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+   
 </header>
 
 <div class="container-fluid">
@@ -140,10 +256,10 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
             This week
           </button>
         </div>
-      </div>
+      </div> 
 
       
-      <h4>Orders</h4>
+      <h4>Pending Orders</h4>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
@@ -159,32 +275,104 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
           <tbody>
              <?php
-             $sql = "SELECT * FROM orders WHERE order_status = 'pending'";
-             $result = mysqli_query($conn, $sql);
-             $query_results = mysqli_fetch_array($result);
-             
-             print_r($query_results);
-             if ($query_results >= 0) {
-               
-              
-              while ($row = mysqli_fetch_assoc($result)){
+
+                foreach($_SESSION['orders'] as $key => $row){
                 
                 ?>
-                  <tr>
-                    <th> <?php echo $row['order_id'];?></th>
-                    <td><?php echo $row['customer_id'];?></td>
-                    <td><?php echo $row['address_main'];?></td>
-                    <td><?php echo $row['order_date'];?></td>
-                    <td><?php echo $row['date_delivery'];?></td>
-                    <td><?php echo $row['time_delivery'];?></td>
-                  </tr>
+                  <form action="orders/" method="post">
+                    <tr>
+                      <th>
+                        <button type="submit" class="btn btn-link"> 
+                          <?php echo $row['order_id'];?>
+                        </button>
+                      </th>
+                      <td><?php 
+                        $sql = "SELECT lastName, firstName FROM customers WHERE customer_id = ".strval($row['customer_id'])."";
+                        $names = mysqli_query($conn, $sql);
+                        $query_name = mysqli_fetch_array($names);
+                        echo $query_name['firstName']." ".$query_name['lastName'];
+                      ?></td>
+                      <td><?php echo $row['address_main'];?></td>
+                      <td><?php echo $row['order_date'];?></td>
+                      <td><?php echo $row['date_delivery'];?></td>
+                      <td><?php echo $row['time_delivery'];?></td>
+                    </tr>
+
+                    <input type="hidden" name="order_id" value="<?= $row['order_id']?>">
+                    <input type="hidden" name="lastName" value="<?= $query_name['lastName']?>">
+                    <input type="hidden" name="firstName" value="<?= $query_name['firstName']?>">
+                    <input type="hidden" name="customer_id" value="<?= $row['customer_id']?>">                    
+                    <input type="hidden" name="address_main" value="<?= $row['address_main']?>">
+                    <input type="hidden" name="address_specific" value="<?= $row['address_specific']?>">
+                    <input type="hidden" name="order_date" value="<?= $row['order_date']?>">
+                    <input type="hidden" name="payment" value="<?= $row['payment']?>">
+                    <input type="hidden" name="order_type" value="<?= $row['order_type']?>">
+                    <input type="hidden" name="date_delivery" value="<?= $row['date_delivery']?>">
+                    <input type="hidden" name="time_delivery" value="<?= $row['time_delivery']?>">
+                    <input type="hidden" name="delivery_options" value="<?= $row['delivery_options']?>">
+                    <input type="hidden" name="shipping_mode" value="<?= $row['shipping_mode']?>">
+                    <input type="hidden" name="shipping_fee" value="<?= $row['shipping_fee']?>">
+                    <input type="hidden" name="total" value="<?= $row['total']?>">
+                    <input type="hidden" name="dedications" value="<?= $row['dedications']?>">
+                    <input type="hidden" name="requests_details" value="<?= $row['requests_details']?>">
+
+                  </form>
                 <?php
               }
-             }
              
-             else{
-              echo "No orders in database.";
-              } 
+             
+
+             ?>
+
+ 
+            
+
+
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+      <hr>
+      <h4>Customers</h4>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope='col'>Name</th>
+              <th scope='col'>Address</th>
+              <th scope='col'>Email</th>
+              <th scope='col'>Mobile</th>
+            </tr>
+          </thead>
+
+          <tbody>
+             <?php
+
+                foreach($_SESSION['customers'] as $key => $row){
+                
+                ?>
+                  <form action="orders/" method="post">
+                    <tr>
+                      <th>
+                        <button type="submit" class="btn btn-link"> 
+                          <?php echo $row['firstName']." ".$row['lastName'];?>
+                        </button>
+                      </th>
+                      <td><?php echo $row['address_specific'].", ".$row['address_main'];?></td>
+                      <td><?php echo $row['email'];?></td>
+                      <td><?php echo $row['mobile'];?></td>
+                    </tr>
+
+                  </form>
+                <?php
+              }
+             
+             
+
              ?>
 
  

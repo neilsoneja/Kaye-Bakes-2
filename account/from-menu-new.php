@@ -128,7 +128,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
         
 
         <div class="col">
-          <form method="post" action="routers/add-to-cart.php?product_id=<?=$row['product_id']?>">
+          <form method="post" action="routers/add-to-cart.php">
           <div class="card shadow-sm">
             <img class="img-thumbnail card-img-top"  src="<?php echo $imageUrl; ?>"  alt="product image"/>
             
@@ -141,6 +141,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
               <div class="d-flex justify-content-between align-items-center">
               <input type="hidden" name="image_url" value="<?php echo $imageUrl; ?>">
               <input type="hidden" name="product_name" value="<?= $row['product_name']?>">
+              <input type="hidden" name="product_id" value="<?= $row['product_id']?>">
               <input type="hidden" name="product_desc" value="<?= $row['product_desc']?>">
               <input type="hidden" name="price" value="<?= $row['price']?>">
               <input type="number" name="quantity" value="1" hidden>

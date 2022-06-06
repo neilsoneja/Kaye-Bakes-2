@@ -340,7 +340,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
         <div class="row ">
             <div class="col ">
                 <div class="list-group list-group-checkable d-grid gap-2 border-0 w-auto">
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="chocolate" value="chocolate" >
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="chocolate" value="chocolate" checked >
                     <label class="list-group-item rounded-3 py-3" for="chocolate">
                         Chocolate
                       <span class="d-block small opacity-50">With support text underneath to add more detail</span>
