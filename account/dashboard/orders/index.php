@@ -32,6 +32,7 @@ $requests_details = $_POST['requests_details'];
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>customize</title>
@@ -99,14 +100,14 @@ $requests_details = $_POST['requests_details'];
 
   </head>
   <body>
-    
+     
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Kaye Bakes</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!--<input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-    -->
+ <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+    
 </header>
 
 <div class="container-fluid">
@@ -190,7 +191,7 @@ $requests_details = $_POST['requests_details'];
 
 
                while ($item = mysqli_fetch_array($cart) ){
-                print_r($query_cart);
+
                   
                   $sql = "SELECT * FROM products WHERE product_id = ".strval($item['product_id'])."";
                   $product = mysqli_query($conn, $sql);
