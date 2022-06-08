@@ -17,7 +17,7 @@ $dateinput = $_POST["date_delivery"];
 $order = $_POST["order_type"];
 
 //setting as session variables
-$_SESSION["date_delivery"] = $dateinput;
+$_SESSION["date_delivery"] = strval($dateinput);
 
 
 //sliicing input date to int

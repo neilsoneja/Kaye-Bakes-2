@@ -169,11 +169,19 @@ if (!empty($_SESSION['cart'])) {
                 //echo "Error in product import";
             }
 
-        }
-        $price= $value['quantity'] * $value['price'];
+            $price= $value['quantity'] * $value['price'];
 
-        $sql = " INSERT INTO cart ( product_id, order_id, quantity,price)  
-           VALUES ( '".$product_id."', '".$order_id."', '".$value['quantity']."','".$price."')";
+            $sql = " INSERT INTO cart ( product_id, order_id, quantity,price)  
+               VALUES ( '".$product_id."', '".$order_id."', '".$value['quantity']."','".$price."')";    
+        }
+        else{
+            $price= $value['quantity'] * $value['price'];
+
+            $sql = " INSERT INTO cart ( product_id, order_id, quantity,price)  
+               VALUES ( '".$value['product_id']."', '".$order_id."', '".$value['quantity']."','".$price."')";    
+
+
+        }
             
             if(mysqli_query($conn, $sql)){
                 //echo "cart import Success";

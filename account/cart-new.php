@@ -133,6 +133,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                                      ";
 
                         if (!empty($_SESSION['cart'])) {
+
                             foreach ($_SESSION['cart'] as $key => $value) {
                                 $output .= "
                                     

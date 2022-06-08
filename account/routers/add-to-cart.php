@@ -10,11 +10,11 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
 if (isset($_POST['add-to-cart'])) {
 
-    if (isset($_SESSION['cart'])) {
+
         
 
         $session_array = array (
-            'product_id'=> $_POST['product_id'],
+            "product_id"=> $_POST['product_id'],
             "image_url" => $_POST['image_url'],
             "product_name" => $_POST['product_name'],
             "product_desc" => $_POST['product_desc'],
@@ -22,7 +22,7 @@ if (isset($_POST['add-to-cart'])) {
             "quantity" => $_POST['quantity']
         );
         $_SESSION['cart'][] = $session_array;
-    }
+    
 }
 header("location: ../cart-new.php");
 ?>

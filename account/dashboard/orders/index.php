@@ -123,7 +123,7 @@ $requests_details = $_POST['requests_details'];
           </li>
 
 
-
+        <!--
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file" class="align-text-bottom"></span>
@@ -137,7 +137,7 @@ $requests_details = $_POST['requests_details'];
               Customers
             </a>
           </li>
-
+    -->
 
           <li class="nav-item">
             <a class="nav-link  active" href="#" disabled>
@@ -169,58 +169,59 @@ $requests_details = $_POST['requests_details'];
       <h4>Cart</h4>
       <div class="row">
           <div class="col-md-auto">
-            <p class="fs-3"><?php echo "| ".$firstName." ".$lastName;?></p> 
+            <p class="display-4"><?php echo  ucwords($firstName)." ".ucwords($lastName);?></p> 
             
           </div>
+      </div>
+      <div class="row">    
           <div class="col-md-auto">
-            <p class="fs-3"><?php echo "|    ".$address_specific.", ".$address_main;?></p>
-          </div>
-          <div class="col-md-auto">
-            <p class="fs-3"><?php echo "|    ".$date_delivery." ".date('h:i a', strtotime($time_delivery));?></p>
+            <p class="fs-3"><?php echo ucwords($address_specific).", ".ucwords($address_main);?></p>
           </div>
       </div>
+      <div class="row">
+          <div class="col-md-auto">
+            <p class="fs-5"><?php echo "To be delivered on ".$date_delivery." ".date('h:i a', strtotime($time_delivery));?></p>
+          </div>
+      </div>
+
       <!--cart and side details-->
      
-         
-
             <?php
               $sql = "SELECT * FROM cart WHERE order_id = ".strval($order_id)."";
               $cart = mysqli_query($conn, $sql);
-              
 
-
-
-               while ($item = mysqli_fetch_array($cart) ){
+               while ($item = mysqli_fetch_assoc($cart) ){
 
                   
                   $sql = "SELECT * FROM products WHERE product_id = ".strval($item['product_id'])."";
                   $product = mysqli_query($conn, $sql);
-                  $query_product = mysqli_fetch_assoc($product);
+                  $qproduct = mysqli_fetch_assoc($product);
+                  if ($qproduct['customized']==1){
 
                   ?>
                   <hr>
                   <div class="row">
                     <div class="col-md-auto">
-                      <img src="<?php  echo $query_product['image_url']?>" style="height: 300px"> <br> 
-                      <?php echo $query_product['product_name'];?>
-                    </div>
+                      <img src="<?php  echo $qproduct['image_url']?>" style="height: 300px"> <br> 
+                      <?php echo $qproduct['product_name'];?>
+                    </div>  
                     <div class="col">
                       <div class="input-group">
                         <span class="input-group-text mb-3 ">Price PHP</span>
-                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $query_product['price'];?>">
+                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $qproduct['price'];?>">
 
                         <span class="input-group-text mb-3 ms-3">Type</span>
-                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $query_product['cake_type'];?>">
+                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $qproduct['cake_type'];?>">
                       
                         <span class="input-group-text mb-3 ms-3">Size</span>
-                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $query_product['cake_size'];?>">
+                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $qproduct['cake_size'];?>">
                       </div>
                       <div class="input-group">
                         <span class="input-group-text ">Flavor</span>
-                        <input type="text" class="form-control "  placeholder="<?php echo $query_product['cake_flavor'];?>">
+                        <input type="text" class="form-control "  placeholder="<?php echo $qproduct['cake_flavor'];?>">
 
                         <span class="input-group-text ms-3">Icing</span>
-                        <input type="text" class="form-control "  placeholder="<?php echo $query_product['icing_flavor'];?>">
+                        <input type="text" class="form-control "  placeholder="<?php echo $qproduct['icing_flavor'];?>">
 
                         <span class="input-group-text ms-3">Quantity</span>
                         <input type="text" class="form-control "  placeholder="<?php echo $item['quantity'];?>"><br>
@@ -237,7 +238,36 @@ $requests_details = $_POST['requests_details'];
                   <?php
     
                 }
-              
+                else{
+                    ?>
+                     <hr>
+                  <div class="row">
+                    <div class="col-md-auto">
+                      <img src="<?php  echo "/Kaye-Bakes-2/account/product_images/".$qproduct['image_url']?>" style="height: 300px"> <br> 
+                      <?php echo $qproduct['product_name'];?>
+                    </div>  
+                    <div class="col">
+                      <div class="input-group">
+                        <span class="input-group-text mb-3 ">Price PHP</span>
+                        <input type="text" class="form-control mb-3 "  placeholder="<?php echo $qproduct['price'];?>">
+
+                      </div>
+                      <div class="input-group">
+                        
+                        <span class="input-group-text ">Quantity</span>
+                        <input type="text" class="form-control "  placeholder="<?php echo $item['quantity'];?>"><br>
+                      </div>
+                      <label for="dedications" class="form-label mt-3">Dedications</label>
+                      <textarea class="form-control" rows="4" name="dedications" placeholder="<?php echo $dedications; ?>"></textarea>
+                      <label for="requests_details" class="form-label">Requests</label>
+                      <textarea class="form-control" rows="4" name="requests_details" placeholder="<?php echo $requests_details; ?>"></textarea>
+                    </div>
+
+                      
+
+                    <?php    
+                }
+               }
               
             ?>
              

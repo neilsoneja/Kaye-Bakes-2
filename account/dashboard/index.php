@@ -6,98 +6,27 @@ $dbPassword = "";
 $dbName = "kaye-bakes";
 $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
 
-
 //database initialization
-
-if (!isset($_SESSION['orders'])){
-  $sql = "SELECT * FROM orders WHERE order_status = 'pending'";
-  $orders = mysqli_query($conn, $sql);
-  $query_order = mysqli_fetch_array($orders);
-
-  while ($row = mysqli_fetch_assoc($orders)){
-    $order_array = array (
-      "order_id"=> $row['order_id'],
-      "customer_id" => $row['customer_id'],
-      "address_main" => $row['address_main'],
-      "address_specific" => $row['address_specific'],
-      "order_date" => $row['order_date'],
-      "payment" => $row['payment'],
-      "order_type" => $row['order_type'],
-      "date_delivery" => $row['date_delivery'],
-      "time_delivery" => $row['time_delivery'],
-      "delivery_options" => $row['delivery_options'],
-      "shipping_mode" => $row['shipping_mode'],
-      "shipping_fee" => $row['shipping_fee'],
-      "total" => $row['total'],
-      "dedications" => $row['dedications'],
-      "requests_details" => $row['requests_details'],
-      "order_status" => $row['order_status']
-    );
-
-    $_SESSION['orders'][$row['order_id']] = $order_array;
-  }
-}
-
-if (!isset($_SESSION['customers'])){
-  
-
-  foreach ($_SESSION['orders'] as $key => $value){
-  
-    $sql = "SELECT * FROM customers WHERE customer_id = ".$value['customer_id']."";
-    $customers = mysqli_query($conn, $sql);
-    
-    while ($row = mysqli_fetch_array($customers)){
-
-      $customer_array = array (
-        "customer_id" => $row['customer_id'],
-        "lastName" => $row['lastName'],
-        "firstName" => $row['firstName'],
-        "address_main" => $row['address_main'],
-        "address_specific" => $row['address_specific'],
-        "email" => $row['email'],
-        "mobile" => $row['mobile']
-      );
-     
-      $_SESSION['customers'][$row['customer_id']] = $customer_array;
-  }
-
-  }
-}
-
-
+/*
 if (!isset($_SESSION['dashcart'])){
-
   foreach ($_SESSION['orders'] as $key=>$value){
     $sql = "SELECT * FROM cart WHERE order_id = ".$value['order_id']."";
     $dashcart = mysqli_query($conn, $sql);
-
-
-    while ($row = mysqli_fetch_assoc($dashcart)){
-      
+    while ($row = mysqli_fetch_assoc($dashcart)){      
       $dashcart_array = array (
         "item_id" => $row['item_id'],
         "product_id" => $row['product_id'],
         "order_id" => $row['order_id'],
         "quantity" => $row['quantity'],
         "price" => $row['price']
-      
       );
-    
       $_SESSION['dashcart'][$row['product_id']] = $dashcart_array;
-  }
-
-  }
-}
-
+  }}}
 
 if (!isset($_SESSION['products'])){
-
   foreach ($_SESSION['dashcart'] as $key=>$value){
-
     $sql = "SELECT * FROM products WHERE product_id = ".$value['product_id']."";
     $products = mysqli_query($conn, $sql);
-
-
     while ($row = mysqli_fetch_assoc($products)){
       $products_array = array (
         "product_id" => $row['product_id'],
@@ -111,16 +40,10 @@ if (!isset($_SESSION['products'])){
         "customized" => $row['customized'],
         "image_url" => $row['image_url']
       );
-    
       $_SESSION['products'][$row['product_id']] = $products_array;
-  }
-
-  }
-}
-
-
+  }}}
+*/
 ?>
-
 
 <!doctype html>
 <html lang="en">
@@ -135,8 +58,6 @@ if (!isset($_SESSION['products'])){
     <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/Kaye-Bakes-2/account/css/bootstrap/dashboard.css">
     
-
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -214,9 +135,7 @@ if (!isset($_SESSION['products'])){
               Dashboard
             </a>
           </li>
-
-
-
+      <!--
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file" class="align-text-bottom"></span>
@@ -230,7 +149,7 @@ if (!isset($_SESSION['products'])){
               Customers
             </a>
           </li>
-
+    -->
 
           <li class="nav-item">
             <a class="nav-link" href="#">
@@ -276,13 +195,18 @@ if (!isset($_SESSION['products'])){
           <tbody>
              <?php
 
-                foreach($_SESSION['orders'] as $key => $row){
+
+              $sql = "SELECT * FROM orders WHERE order_status = 'pending' ORDER BY order_id DESC";
+              $orders = mysqli_query($conn, $sql);
+
+              while ($row = mysqli_fetch_assoc($orders)){
+
                 
                 ?>
                   <form action="orders/index.php" method="post">
                     <tr>
                       <th>
-                        <button type="submit" class="btn btn-link"> 
+                        <button name="" type="submit" class="btn btn-link"> 
                           <?php echo $row['order_id'];?>
                         </button>
                       </th>
@@ -290,9 +214,9 @@ if (!isset($_SESSION['products'])){
                         $sql = "SELECT lastName, firstName FROM customers WHERE customer_id = ".strval($row['customer_id'])."";
                         $names = mysqli_query($conn, $sql);
                         $query_name = mysqli_fetch_array($names);
-                        echo $query_name['firstName']." ".$query_name['lastName'];
+                        echo ucwords($query_name['firstName'])." ".ucwords($query_name['lastName']);
                       ?></td>
-                      <td><?php echo $row['address_main'];?></td>
+                      <td><?php echo ucwords($row['address_main']);?></td>
                       <td><?php echo $row['order_date'];?></td>
                       <td><?php echo $row['date_delivery'];?></td>
                       <td><?php echo $row['time_delivery'];?></td>
@@ -351,9 +275,10 @@ if (!isset($_SESSION['products'])){
 
           <tbody>
              <?php
-
-                foreach($_SESSION['customers'] as $key => $row){
-                
+                 
+              $sql = "SELECT * FROM customers ORDER BY customer_id DESC" ;
+              $customers = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_array($customers)){  
                 ?>
                   <form action="orders/" method="post">
                     <tr>
@@ -370,15 +295,7 @@ if (!isset($_SESSION['products'])){
                   </form>
                 <?php
               }
-             
-             
-
              ?>
-
- 
-            
-
-
           </tbody>
         </table>
       </div>

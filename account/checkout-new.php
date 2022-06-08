@@ -227,8 +227,8 @@ session_start();
               <label for="province" class="form-label">Province</label>
               <select class="form-select" id="province" name="province" required>
                 <option value="">Choose...</option>
-                <option value="Cavite City">Metro Manila</option>
-                <option value="Cavite City">Cavite</option>
+                <option value="NCR">Metro Manila</option>
+                <option value="Cavite">Cavite</option>
               </select>
               <div class="invalid-feedback">
                 Please select a valid Province.

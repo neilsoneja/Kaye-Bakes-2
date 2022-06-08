@@ -136,69 +136,109 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                   ?>
                   <h1 class="bebas"><?php echo $query_results['product_name'];?></h1>
                   <p>Size: <?php 
+                  $onel="";
+                  $twol="";
+                  $threel="";
+                  $fouri="";
+                  $sixi="";
+                  $ninei="";
+                  $twelvei="";
                   switch($query_results['cake_size']){
                     case '1layered':
                       echo "1 layer";
+                      $onel="selected";
                       break;
                     case '2layered':
                       echo "2 layers";
+                      $twol="selected";
                       break;
                     case '3layered':
                       echo "3 layers";
+                      $threel="selected";
                       break;
                     case '4inches':
                       echo "4 inches";
+                      $fouri="selected";
                       break;
                     case '6inches':
                       echo "6 inches";
+                      $sixi="selected";
                       break;
                     case '9inches':
                       echo "9 inches";
+                      $ninei="selected";
+                      break;
+                    case '12inches':
+                      echo "12 inches";
+                      $twelvei="selected";
                       break;      
                   }                  
                   ?></p>
                   <p>Flavor: <?php 
+                  $chocolate="";
+                  $red_velvet="";
+                  $carrot="";
+                  $mocha_chiffon="";
+                  $vanilla_chiffon="";
+                  $carrot_dog="";
                   switch($query_results['cake_flavor']){
                     case 'chocolate':
                       echo "Chocolate Flavor";
+                      $chocolate="checked";
                       break;
                     case 'red_velvet':
                       echo "Red Velvet";
+                      $red_velvet="checked";
                       break;
                     case 'carrot':
                       echo "Carrot Flavor";
+                      $carrot="checked";
                       break;
                     case 'mocha_chiffon':
                       echo "Mocha Chiffon Flavor";
+                      $mocha_chiffon="checked";
                       break;
                     case 'vanilla_chiffon':
                       echo "Vanilla Chiffon Flavor";
+                      $vanilla_chiffon="checked";
                       break;
                     case 'carrot_dog':
                       echo "Carrot Flavor (Dog Cake)";
+                      $carrot_dog="checked";
                       break;      
                   }
                   ?></p>
                   <p>Icing: <?php 
-                  
+                  $buttercream ="";
+                  $cream_cheese ="";
+                  $meringue ="";
+                  $chocolate_icing ="";
+                  $fondant ="";
+                  $potato ="";
                   switch($query_results['icing_flavor']){
                     case 'buttercream':
                       echo "Buttercream";
+                      $buttercream="checked";
                       break;
                     case 'cream_cheese':
                       echo "Cream Cheese";
+                      $cream_cheese="checked";
                       break;
                     case 'meringue':
                       echo "Meringue";
+                      $meringue="checked";
                       break;
                     case 'chocolate_icing':
                       echo "Chocolate";
+                      $chocolate_icing="checked";
                       break;
-                    case 'vanilla_chiffon':
-                      echo "Vanilla Chiffon Flavor";
+                    case 'fondant':
+                      echo "Fondant";
+                      $fondant="checked";
                       break;
                     case 'potato':
                       echo "Potato";
+                      $potato="checked";
                       break;      
                   }
                   
@@ -269,9 +309,9 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
               case "layered":
                 ?>
                 <select name="cake_size" id="cake_size"  class="form-control  w-50 mt-3  w-50 mt-3" >
-                  <option value="" disabled selected hidden>Number of Layers</option>
-                  <option value="2layered">Two-Layered Cake</option>
-                  <option value="3layered">Three-Layered Cake</option>
+                  <option value="" disabled  hidden>Number of Layers</option>
+                  <option value="2layered" <?php echo $twol;?> >Two-Layered Cake</option>
+                  <option value="3layered" <?php echo $threel;?>>Three-Layered Cake</option>
                   </select>
            
                 <?php
@@ -279,27 +319,27 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
               case "cake":
                 ?>
                 <select name="cake_size" id="cake_size"  class="form-control  w-50 mt-3" >
-                  <option value="" disabled selected hidden>Cake Size</option>
-                  <option value="6inches">6 inches</option>
-                  <option value="9inches">9 inches</option>
-                  <option value="12inches">12 inches</option>
+                  <option value="" disabled  hidden>Cake Size</option>
+                  <option value="6inches" <?php echo $sixi;?>>6 inches</option>
+                  <option value="9inches" <?php echo $ninei;?> >9 inches</option>
+                  <option value="12inches" <?php echo $twelvei;?>>12 inches</option>
                   </select>
                 <?php
                 break;
               case "dog":
                 ?>
                 <select name="cake_size" id="cake_size"  class="form-control  w-50 mt-3" >
-                  <option value="" disabled selected hidden>Cake Size</option>
-                  <option value="4inches">4 inches</option>
-                  <option value="6inches">6 inches</option>
-                  <option value="9inches">9 inches</option>
+                  <option value="" disabled hidden>Cake Size</option>
+                  <option value="4inches" <?php echo $fouri;?>>4 inches</option>
+                  <option value="6inches"<?php echo $sixi;?>>6 inches</option>
+                  <option value="9inches"<?php echo $ninei;?>>9 inches</option>
                   </select>
                 <?php
                 break;
               case "cat":
                 ?>
                 <select name="cake_size" id="cake_size"  class="form-control  w-50 mt-3" >
-                  <option value="" disabled selected >Cake Size</option>
+                  <option value="" disabled >Cake Size</option>
                   <option value="4inches" selected >4 inches</option>
                   </select>
                 <?php
@@ -308,8 +348,8 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                 ?>
                 <select name="cake_size" id="cake_size"  class="form-control  w-50 mt-3" >
                   <option value="" disabled selected hidden>Cake Size</option>
-                  <option value="6inches">6 inches</option>
-                  <option value="9inches">9 inches</option>
+                  <option value="6inches" <?php echo $sixi;?>>6 inches</option>
+                  <option value="9inches"<?php echo $ninei;?>>9 inches</option>
                   </select>
                 <?php
                 break;
@@ -317,16 +357,18 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                 ?>
                 <select name="cake_size" id="cake_size"  class="form-control  w-50 mt-3" >
                   <option value="" disabled selected hidden>Cake Size</option>
-                  <option value="1layered">1 layer</option>
-                  <option value="2layered">2 layers</option>
-                  <option value="3layered">3 layers</option>
+                  <option value="1layered" <?php echo $onel;?>>1 layer</option>
+                  <option value="2layered" <?php echo $twol;?>>2 layers</option>
+                  <option value="3layered" <?php echo $threel;?>>3 layers</option>
                   </select>
                 <?php
                 break;
               default:
                 
                 break;  }
-              ?>
+              
+            
+                ?>
           </div>
       </div>
   </div>
@@ -340,13 +382,13 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
         <div class="row ">
             <div class="col ">
                 <div class="list-group list-group-checkable d-grid gap-2 border-0 w-auto">
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="chocolate" value="chocolate"  >
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="chocolate" value="chocolate" <?php echo $chocolate; ?> >
                     <label class="list-group-item rounded-3 py-3" for="chocolate">
                         Chocolate
                       <span class="d-block small opacity-50">With support text underneath to add more detail</span>
                     </label>
                   
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="red_velvet" value="red_velvet">
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="red_velvet" value="red_velvet"  <?php echo $red_velvet; ?>>
                     <label class="list-group-item rounded-3 py-3" for="red_velvet">
                       Red Velvet
                       <span class="d-block small opacity-50">Some other text goes here</span>
@@ -354,7 +396,7 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
                     </label>
 
 
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="carrot" value="carrot">
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="carrot" value="carrot" <?php echo $carrot; ?>>
                     <label class="list-group-item rounded-3 py-3" for="carrot">
                       Carrot Cake
                       <span class="d-block small opacity-50">Some other text goes here</span>
@@ -365,20 +407,20 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
             <div class="col">
                 <div class="list-group list-group-checkable d-grid gap-2 border-0 w-auto">
                   
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="mocha_chiffon" value="mocha_chiffon">
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="mocha_chiffon" value="mocha_chiffon" <?php echo $mocha_chiffon; ?>>
                     <label class="list-group-item rounded-3 py-3" for="mocha_chiffon">
                       Mocha Chiffon
                       <span class="d-block small opacity-50">And we end with another snippet of text</span>
                     </label>
                   
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="vanilla_chiffon" value="vanilla_chiffon" >
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="vanilla_chiffon" value="vanilla_chiffon" <?php echo $vanilla_chiffon; ?>>
                     <label class="list-group-item rounded-3 py-3" for="vanilla_chiffon">
                       Vanilla Chiffon
                       <span class="d-block small opacity-50">details ...</span>
                     </label>
 
                     
-                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="carrot_dog" value="carrot_dog" >
+                    <input class="list-group-item-check pe-none" type="radio" name="cake_flavor" id="carrot_dog" value="carrot_dog" <?php echo $carrot_dog; ?>>
                     <label class="list-group-item rounded-3 py-3" for="carrot_dog">
                       Carrot Cake (Dog Cake)
                       <span class="d-block small opacity-50">details ...</span>
@@ -399,19 +441,19 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
         <div class="row ">
             <div class="col ">
                 <div class="list-group list-group-checkable d-grid gap-2 border-0 w-auto">
-                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="buttercream" value="buttercream" >
+                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="buttercream" value="buttercream" <?php echo $buttercream;?> >
                     <label class="list-group-item rounded-3 py-3" for="buttercream">
                       Buttercream Frosting
                       <span class="d-block small opacity-50">With support text underneath to add more detail</span>
                     </label>
                   
-                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="cream_cheese" value="cream_cheese">
+                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="cream_cheese" value="cream_cheese" <?php echo $cream_cheese;?>>
                     <label class="list-group-item rounded-3 py-3" for="cream_cheese">
                       Cream Cheese Frosting
                       <span class="d-block small opacity-50">Some other text goes here</span>
                     </label>
 
-                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="meringue" value="meringue">
+                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="meringue" value="meringue" <?php echo $meringue;?>>
                     <label class="list-group-item rounded-3 py-3" for="meringue">
                       Meringue Icing
                       <span class="d-block small opacity-50">(applicable for cupcakes only)</span>
@@ -421,19 +463,19 @@ $conn = mysqli_connect($dbservername,$dbUsername,$dbPassword,$dbName);
             <div class="col ">
                 <div class="list-group list-group-checkable d-grid gap-2 border-0 w-auto">
                   
-                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="chocolate_icing" value="chocolate_icing">
+                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="chocolate_icing" value="chocolate_icing" <?php echo $chocolate_icing;?>>
                     <label class="list-group-item rounded-3 py-3" for="chocolate_icing">
                       Chocolate Frosting
                       <span class="d-block small opacity-50">And we end with another snippet of text</span>
                     </label>
                   
-                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="potato" value="potato" >
+                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="potato" value="potato" <?php echo $potato;?> >
                     <label class="list-group-item rounded-3 py-3" for="potato">
                       Potato Icing (for Dog Cake)
                       <span class="d-block small opacity-50">This option is disabled</span>
                     </label>
                  
-                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="fondant" value="fondant" >
+                    <input class="list-group-item-check pe-none" type="radio" name="icing" id="fondant" value="fondant" <?php echo $fondant;?> >
                     <label class="list-group-item rounded-3 py-3" for="fondant">
                       Fondant Icing
                       <span class="d-block small opacity-50">text text</span>

@@ -1,14 +1,14 @@
 INFO:root:---------search start---------
 INFO:root: loading VP-Tree and hashes...
 INFO:root: performing search...
-INFO:root: search took 0.000993490219116211 seconds
+INFO:root: search took 0.0 seconds
 INFO:root:---------search end---------
-INFO:root: 1 total image(s) with d: 22, h: 5.567377487296892e+18
-INFO:root: 1 total image(s) with d: 24, h: 5.572435108999063e+18
-INFO:root: 1 total image(s) with d: 25, h: 1.805836813927522e+19
+INFO:root: 1 total image(s) with d: 19, h: 1.805836813927522e+19
+INFO:root: 1 total image(s) with d: 22, h: 1.1481035094631076e+19
+INFO:root: 1 total image(s) with d: 23, h: 1.17038931960381e+19
+INFO:root: 1 total image(s) with d: 23, h: 1.3035307002886994e+19
 INFO:root: 1 total image(s) with d: 27, h: 6.171676875945392e+18
-INFO:root: 1 total image(s) with d: 28, h: 6140503357578415104
-INFO:root: 1 total image(s) with d: 29, h: 3.7778579260748344e+18
-INFO:root: 1 total image(s) with d: 31, h: 1.17038931960381e+19
-INFO:root: 1 total image(s) with d: 32, h: 1.1481035094631076e+19
-INFO:root: 1 total image(s) with d: 33, h: 1.3035307002886994e+19
+INFO:root: 1 total image(s) with d: 28, h: 5.567377487296892e+18
+INFO:root: 1 total image(s) with d: 28, h: 5.572435108999063e+18
+INFO:root: 1 total image(s) with d: 30, h: 6140503357578415104
+INFO:root: 1 total image(s) with d: 31, h: 3.7778579260748344e+18
